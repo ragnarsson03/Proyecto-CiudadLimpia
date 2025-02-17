@@ -9,37 +9,65 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // Filtros
+        $filtroEstado = $request->get('estado', 'todos');
+        $filtroInfraestructura = $request->get('infraestructura', 'todos');
+        $filtroPeriodo = $request->get('periodo', '30'); // días
+
+        // Query base para incidencias
+        $incidenciasQuery = Incidencia::query()
+            ->with(['infraestructura', 'tecnico', 'ciudadano'])
+            ->when($filtroEstado !== 'todos', function($query) use ($filtroEstado) {
+                return $query->where('estado', $filtroEstado);
+            })
+            ->when($filtroInfraestructura !== 'todos', function($query) use ($filtroInfraestructura) {
+                return $query->where('infraestructura_id', $filtroInfraestructura);
+            })
+            ->when($filtroPeriodo, function($query) use ($filtroPeriodo) {
+                return $query->where('fecha', '>=', now()->subDays($filtroPeriodo));
+            });
+
         // Estadísticas de Infraestructura
         $totalInfraestructuras = Infraestructura::count();
         $infraestructurasOperativas = Infraestructura::where('estado', 'operativo')->count();
         $infraestructurasMantenimiento = Infraestructura::where('estado', 'mantenimiento')->count();
         $infraestructurasFueraServicio = Infraestructura::where('estado', 'fuera_de_servicio')->count();
 
+        // Infraestructuras más afectadas
+        $infraestructurasMasAfectadas = DB::table('infraestructuras')
+            ->select('infraestructuras.*')
+            ->selectRaw('COUNT(incidencias.id) as total_incidencias')
+            ->leftJoin('incidencias', 'infraestructuras.id', '=', 'incidencias.infraestructura_id')
+            ->where('incidencias.fecha', '>=', now()->subDays($filtroPeriodo))
+            ->groupBy('infraestructuras.id')
+            ->havingRaw('COUNT(incidencias.id) > 0')
+            ->orderByRaw('COUNT(incidencias.id) DESC')
+            ->take(5)
+            ->get();
+
         // Estadísticas generales de incidencias
-        $totalIncidencias = Incidencia::count();
-        $incidenciasHoy = Incidencia::whereDate('fecha', today())->count();
+        $totalIncidencias = $incidenciasQuery->count();
+        $incidenciasHoy = $incidenciasQuery->clone()->whereDate('fecha', today())->count();
 
         // Estadísticas por estado de incidencias
-        $incidenciasPendientes = Incidencia::where('estado', 'pendiente')->count();
-        $incidenciasEnProceso = Incidencia::where('estado', 'en_proceso')->count();
-        $incidenciasResueltas = Incidencia::where('estado', 'resuelto')->count();
-        $incidenciasCanceladas = Incidencia::where('estado', 'cancelado')->count();
+        $incidenciasPorEstado = $incidenciasQuery->clone()
+            ->select('estado', DB::raw('count(*) as total'))
+            ->groupBy('estado')
+            ->pluck('total', 'estado')
+            ->toArray();
 
-        // Calcular porcentajes
-        $porcentajePendientes = $totalIncidencias > 0 ? ($incidenciasPendientes / $totalIncidencias) * 100 : 0;
-        $porcentajeEnProceso = $totalIncidencias > 0 ? ($incidenciasEnProceso / $totalIncidencias) * 100 : 0;
-        $porcentajeResueltas = $totalIncidencias > 0 ? ($incidenciasResueltas / $totalIncidencias) * 100 : 0;
-
-        // Estadísticas por prioridad
-        $incidenciasPrioridadBaja = Incidencia::where('prioridad', 'baja')->count();
-        $incidenciasPrioridadMedia = Incidencia::where('prioridad', 'media')->count();
-        $incidenciasPrioridadAlta = Incidencia::where('prioridad', 'alta')->count();
-        $incidenciasPrioridadCritica = Incidencia::where('prioridad', 'critica')->count();
+        // Estadísticas por tipo de infraestructura
+        $incidenciasPorTipo = $incidenciasQuery->clone()
+            ->join('infraestructuras', 'incidencias.infraestructura_id', '=', 'infraestructuras.id')
+            ->select('infraestructuras.tipo', DB::raw('count(*) as total'))
+            ->groupBy('infraestructuras.tipo')
+            ->pluck('total', 'tipo')
+            ->toArray();
 
         // Últimas incidencias
-        $ultimasIncidencias = Incidencia::with(['infraestructura', 'tecnico', 'ciudadano'])
+        $ultimasIncidencias = $incidenciasQuery->clone()
             ->latest('fecha')
             ->take(5)
             ->get();
@@ -49,26 +77,25 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Lista de infraestructuras para el filtro
+        $infraestructuras = Infraestructura::select('id', 'tipo', 'ubicacion')->get();
+
         return view('dashboard', compact(
             'totalInfraestructuras',
             'infraestructurasOperativas',
             'infraestructurasMantenimiento',
             'infraestructurasFueraServicio',
+            'infraestructurasMasAfectadas',
             'totalIncidencias',
             'incidenciasHoy',
-            'incidenciasPendientes',
-            'incidenciasEnProceso',
-            'incidenciasResueltas',
-            'incidenciasCanceladas',
-            'porcentajePendientes',
-            'porcentajeEnProceso',
-            'porcentajeResueltas',
-            'incidenciasPrioridadBaja',
-            'incidenciasPrioridadMedia',
-            'incidenciasPrioridadAlta',
-            'incidenciasPrioridadCritica',
+            'incidenciasPorEstado',
+            'incidenciasPorTipo',
             'ultimasIncidencias',
-            'ultimasInfraestructuras'
+            'ultimasInfraestructuras',
+            'infraestructuras',
+            'filtroEstado',
+            'filtroInfraestructura',
+            'filtroPeriodo'
         ));
     }
 }

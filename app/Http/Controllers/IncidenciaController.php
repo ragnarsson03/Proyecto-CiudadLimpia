@@ -13,6 +13,7 @@ class IncidenciaController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('role:admin,tecnico')->only(['edit', 'update', 'destroy']);
+        $this->middleware('can:update,incidencia')->only('update');
     }
 
     /**
@@ -23,6 +24,9 @@ class IncidenciaController extends Controller
     public function index()
     {
         $incidencias = Incidencia::with(['infraestructura', 'tecnico', 'ciudadano'])
+            ->when(auth()->user()->role === 'ciudadano', function($query) {
+                return $query->where('ciudadano_id', auth()->id());
+            })
             ->latest()
             ->paginate(10);
         return view('incidencia.index', compact('incidencias'));
@@ -49,22 +53,37 @@ class IncidenciaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'tipo' => 'required|string|max:255',
-            'ubicacion' => 'required|string|max:255',
-            'descripcion' => 'required|string',
-            'prioridad' => 'required|in:baja,media,alta,critica',
             'infraestructura_id' => 'required|exists:infraestructuras,id',
-            'tecnico_id' => 'nullable|exists:users,id'
+            'descripcion' => 'required|string|min:10|max:500',
+            'prioridad' => 'required|in:baja,media,alta,critica',
+            'fecha' => 'required|date|after_or_equal:today',
+            'ubicacion' => 'required|string|max:255',
+            'imagen' => 'nullable|image|max:2048'
+        ], [
+            'descripcion.required' => 'La descripción es obligatoria',
+            'descripcion.min' => 'La descripción debe tener al menos 10 caracteres',
+            'fecha.after_or_equal' => 'La fecha no puede ser anterior a hoy',
+            'imagen.image' => 'El archivo debe ser una imagen',
+            'imagen.max' => 'La imagen no debe pesar más de 2MB'
         ]);
 
-        $validated['estado'] = 'pendiente';
-        $validated['fecha'] = now();
-        $validated['ciudadano_id'] = auth()->id();
-
-        $incidencia = Incidencia::create($validated);
-
-        return redirect()->route('incidencia.index')
-            ->with('success', 'Incidencia registrada exitosamente.');
+        try {
+            $incidencia = new Incidencia($validated);
+            $incidencia->ciudadano_id = auth()->id();
+            $incidencia->estado = 'pendiente';
+            
+            if ($request->hasFile('imagen')) {
+                $incidencia->imagen = $request->file('imagen')->store('incidencias', 'public');
+            }
+            
+            $incidencia->save();
+            
+            return redirect()->route('incidencia.index')
+                ->with('success', 'Incidencia reportada correctamente');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error al crear la incidencia. Por favor, intente nuevamente.')
+                ->withInput();
+        }
     }
 
     /**
