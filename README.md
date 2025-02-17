@@ -7,10 +7,10 @@
 Laravel
 PHP
 PostGreSQL
-HTML
+- HTML
 CSS
 
 
 #Proyecto Desarrollado por:
 
-- Jostin Perdigón ()
+- Jostin Perdigón (31412625).
