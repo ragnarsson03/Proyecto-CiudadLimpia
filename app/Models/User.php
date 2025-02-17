@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -41,4 +42,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function incidenciasAsignadas()
+    {
+        return $this->hasMany(Incidencia::class, 'tecnico_id');
+    }
+
+    public function incidenciasReportadas()
+    {
+        return $this->hasMany(Incidencia::class, 'ciudadano_id');
+    }
+
+    public function isTecnico()
+    {
+        return $this->role === 'tecnico';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isCiudadano()
+    {
+        return $this->role === 'ciudadano';
+    }
 }
