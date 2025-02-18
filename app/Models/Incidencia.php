@@ -11,6 +11,8 @@ class Incidencia extends Model
 {
     use HasFactory;
 
+    protected $table = 'incidencias';
+
     protected $fillable = [
         'tipo',
         'ubicacion',
@@ -18,13 +20,17 @@ class Incidencia extends Model
         'fecha',
         'estado',
         'prioridad',
+        'latitud',
+        'longitud',
         'infraestructura_id',
         'tecnico_id',
         'ciudadano_id'
     ];
 
     protected $casts = [
-        'fecha' => 'datetime'
+        'fecha' => 'datetime',
+        'latitud' => 'decimal:8',
+        'longitud' => 'decimal:8'
     ];
 
     public function infraestructura()

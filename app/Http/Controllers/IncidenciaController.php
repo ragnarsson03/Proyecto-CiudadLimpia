@@ -12,7 +12,8 @@ class IncidenciaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:admin,tecnico')->only(['edit', 'update', 'destroy']);
+        $this->middleware('role:admin,tecnico,supervisor')->only(['edit', 'update']);
+        $this->middleware('role:admin')->only(['destroy']);
         $this->middleware('can:update,incidencia')->only('update');
     }
 
@@ -120,19 +121,33 @@ class IncidenciaController extends Controller
     public function update(Request $request, Incidencia $incidencia)
     {
         $validated = $request->validate([
-            'tipo' => 'required|string|max:255',
-            'ubicacion' => 'required|string|max:255',
-            'descripcion' => 'required|string',
+            'descripcion' => 'required|string|min:10|max:500',
             'estado' => 'required|in:pendiente,en_proceso,resuelto,cancelado',
             'prioridad' => 'required|in:baja,media,alta,critica',
-            'infraestructura_id' => 'required|exists:infraestructuras,id',
-            'tecnico_id' => 'nullable|exists:users,id'
+            'tecnico_id' => 'nullable|exists:users,id',
+            'latitud' => 'required|numeric',
+            'longitud' => 'required|numeric'
         ]);
 
-        $incidencia->update($validated);
+        try {
+            // Si se está asignando o cambiando el técnico
+            $tecnicoAnterior = $incidencia->tecnico_id;
+            
+            $incidencia->update($validated);
 
-        return redirect()->route('incidencia.index')
-            ->with('success', 'Incidencia actualizada exitosamente.');
+            // Notificar al técnico si fue asignado
+            if ($validated['tecnico_id'] && $tecnicoAnterior !== $validated['tecnico_id']) {
+                $tecnico = User::find($validated['tecnico_id']);
+                $tecnico->notify(new IncidenciaAsignada($incidencia));
+            }
+
+            return redirect()->route('incidencia.show', $incidencia)
+                ->with('success', 'Incidencia actualizada correctamente');
+        } catch (\Exception $e) {
+            return back()
+                ->with('error', 'Error al actualizar la incidencia. Por favor, intente nuevamente.')
+                ->withInput();
+        }
     }
 
     /**

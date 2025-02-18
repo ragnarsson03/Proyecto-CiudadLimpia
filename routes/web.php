@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfraestructuraController;
 use App\Http\Controllers\IncidenciaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExportController; // Agregado
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rutas de Incidencia
     Route::resource('incidencia', IncidenciaController::class);
+
+    // Rutas de Exportación
+    Route::get('/export/incidencias/{format}', [ExportController::class, 'incidencias'])
+        ->name('export.incidencias')
+        ->where('format', 'pdf|excel');
 });
 
 require __DIR__.'/auth.php';

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -43,6 +44,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected function setPasswordAttribute($value)
+    {
+        if ($value && !Hash::check($value, $this->password)) {
+            $this->attributes['password'] = Hash::make($value);
+        }
+    }
+    
+
+    public const ROLES = [
+        'admin' => 'Administrador',
+        'supervisor' => 'Supervisor',
+        'tecnico' => 'Técnico',
+        'ciudadano' => 'Ciudadano'
+    ];
+
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
+
+    public function hasAnyRole($roles)
+    {
+        return in_array($this->role, (array) $roles);
+    }
+
     public function incidenciasAsignadas()
     {
         return $this->hasMany(Incidencia::class, 'tecnico_id');
@@ -53,18 +79,8 @@ class User extends Authenticatable
         return $this->hasMany(Incidencia::class, 'ciudadano_id');
     }
 
-    public function isTecnico()
+    public function receivesBroadcastNotificationsOn()
     {
-        return $this->role === 'tecnico';
-    }
-
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
-
-    public function isCiudadano()
-    {
-        return $this->role === 'ciudadano';
+        return 'users.'.$this->id;
     }
 }

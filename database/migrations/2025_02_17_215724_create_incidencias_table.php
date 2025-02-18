@@ -21,6 +21,8 @@ return new class extends Migration
             $table->timestamp('fecha');
             $table->enum('estado', ['pendiente', 'en_proceso', 'resuelto', 'cancelado']);
             $table->enum('prioridad', ['baja', 'media', 'alta', 'critica']);
+            $table->decimal('latitud', 10, 8)->nullable();
+            $table->decimal('longitud', 11, 8)->nullable();
             $table->foreignId('infraestructura_id')->constrained('infraestructuras')->onDelete('cascade');
             $table->foreignId('tecnico_id')->nullable()->constrained('users');
             $table->foreignId('ciudadano_id')->constrained('users');
