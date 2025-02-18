@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Jobs\AnalisisPredictivoPeriodico;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +16,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // Ejecutar análisis predictivo cada domingo a las 00:00
+        $schedule->job(new AnalisisPredictivoPeriodico)->weekly()->sundays()->at('00:00');
+        
+        // Verificar mantenimientos preventivos diariamente
+        $schedule->command('mantenimiento:verificar')->dailyAt('06:00');
+        
+        // Verificar niveles de inventario diariamente
+        $schedule->command('inventario:verificar')->dailyAt('07:00');
     }
 
     /**

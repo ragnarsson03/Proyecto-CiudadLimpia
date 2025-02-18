@@ -9,8 +9,12 @@ use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OrdenTrabajoController;
 use App\Http\Controllers\MantenimientoPreventivoController;
+use App\Http\Controllers\MantenimientoPredictivoController;
 use App\Http\Controllers\PresupuestoController;
 use App\Http\Controllers\RutaController;
+use App\Http\Controllers\RecursoController;
+use App\Mail\NotificacionIncidencia;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,8 +48,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rutas de Infraestructura
     Route::resource('infraestructura', InfraestructuraController::class);
 
-    // Rutas de Incidencia
-    Route::resource('incidencia', IncidenciaController::class);
+    // Rutas de Incidencias
+    Route::resource('incidencias', IncidenciaController::class);
 
     // Rutas de Personal
     Route::resource('personal', PersonalController::class);
@@ -81,6 +85,32 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/export/incidencias/{format}', [ExportController::class, 'incidencias'])
         ->name('export.incidencias')
         ->where('format', 'pdf|excel');
+
+    // Rutas para gestión de recursos
+    Route::prefix('recursos')->middleware(['auth'])->group(function () {
+        Route::get('/personal', [RecursoController::class, 'indexPersonal'])->name('recursos.personal.index');
+        Route::get('/materiales', [RecursoController::class, 'indexMateriales'])->name('recursos.materiales.index');
+        Route::post('/orden-trabajo/{ordenTrabajo}/asignar', [RecursoController::class, 'asignarRecursos'])->name('recursos.asignar');
+        Route::get('/optimizar-rutas', [RecursoController::class, 'optimizarRutas'])->name('recursos.optimizar-rutas');
+    });
+
+    // Rutas para análisis predictivo
+    Route::prefix('analisis')->middleware(['auth', 'role:admin,supervisor'])->group(function () {
+        Route::get('/predictivo', [MantenimientoPredictivoController::class, 'analizarPatrones'])
+            ->name('analisis.predictivo');
+    });
+
+    // Ruta de prueba para correo
+    Route::get('/test-email', function () {
+        $incidencia = \App\Models\Incidencia::first();
+        
+        if (!$incidencia) {
+            return 'No hay incidencias para probar. Crea una primero.';
+        }
+
+        Mail::to('test@example.com')->send(new NotificacionIncidencia($incidencia));
+        return 'Correo enviado! Revisa Mailtrap.';
+    });
 });
 
 require __DIR__.'/auth.php';

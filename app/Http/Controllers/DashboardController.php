@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Incidencia;
 use App\Models\Infraestructura;
+use App\Models\MantenimientoPreventivo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function index(Request $request)
     {
-        // Filtros
-        $filtroEstado = $request->get('estado', 'todos');
-        $filtroInfraestructura = $request->get('infraestructura', 'todos');
-        $filtroPeriodo = $request->get('periodo', '30'); // días
+        // Filtros con valores por defecto
+        $filtroEstado = $request->input('estado', 'todos');
+        $filtroInfraestructura = $request->input('infraestructura', 'todos');
+        $filtroPeriodo = $request->input('periodo', '30');
 
         // Query base para incidencias
         $incidenciasQuery = Incidencia::query()
@@ -86,6 +92,21 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Estadísticas de Mantenimiento Preventivo
+        $mantenimientosPendientes = MantenimientoPreventivo::where('proxima_ejecucion', '<=', now())
+            ->where('activo', true)
+            ->count();
+            
+        $mantenimientosProximos = MantenimientoPreventivo::where('proxima_ejecucion', '>', now())
+            ->where('proxima_ejecucion', '<=', now()->addDays(7))
+            ->where('activo', true)
+            ->count();
+            
+        $costoMantenimientoMensual = MantenimientoPreventivo::where('activo', true)
+            ->where('proxima_ejecucion', '>=', now()->startOfMonth())
+            ->where('proxima_ejecucion', '<=', now()->endOfMonth())
+            ->sum('costo_estimado');
+
         // Lista de infraestructuras para el filtro
         $infraestructuras = Infraestructura::select('infraestructuras.id', 'infraestructuras.tipo', 'infraestructuras.ubicacion')->get();
 
@@ -101,6 +122,9 @@ class DashboardController extends Controller
             'incidenciasPorTipo',
             'ultimasIncidencias',
             'ultimasInfraestructuras',
+            'mantenimientosPendientes',
+            'mantenimientosProximos',
+            'costoMantenimientoMensual',
             'infraestructuras',
             'filtroEstado',
             'filtroInfraestructura',

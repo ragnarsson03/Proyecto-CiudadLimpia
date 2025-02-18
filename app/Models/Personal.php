@@ -16,14 +16,18 @@ class Personal extends Model
         'user_id',
         'especialidad',
         'disponibilidad',
+        'horario_laboral',
         'habilidades',
+        'certificaciones',
         'telefono',
         'direccion',
         'notas'
     ];
 
     protected $casts = [
-        'habilidades' => 'array'
+        'habilidades' => 'array',
+        'horario_laboral' => 'json',
+        'certificaciones' => 'json'
     ];
 
     public function user()
@@ -41,6 +45,23 @@ class Personal extends Model
     public function rutas()
     {
         return $this->hasMany(Ruta::class);
+    }
+
+    public function recursosOrdenTrabajo()
+    {
+        return $this->hasMany(RecursoOrdenTrabajo::class);
+    }
+
+    public function ordenesTrabajoActuales()
+    {
+        return $this->hasManyThrough(
+            OrdenTrabajo::class,
+            RecursoOrdenTrabajo::class,
+            'personal_id',
+            'id',
+            'id',
+            'orden_trabajo_id'
+        )->where('ordenes_trabajo.estado', 'en_proceso');
     }
 
     public function isDisponible()
