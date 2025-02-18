@@ -5,7 +5,7 @@
 -- Dumped from database version 17.0
 -- Dumped by pg_dump version 17.0
 
--- Started on 2025-02-17 21:03:17
+-- Started on 2025-02-17 21:27:12
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +24,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 223 (class 1259 OID 29895)
+-- TOC entry 223 (class 1259 OID 29991)
 -- Name: failed_jobs; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -42,7 +42,7 @@ CREATE TABLE public.failed_jobs (
 ALTER TABLE public.failed_jobs OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 29894)
+-- TOC entry 222 (class 1259 OID 29990)
 -- Name: failed_jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -66,7 +66,7 @@ ALTER SEQUENCE public.failed_jobs_id_seq OWNED BY public.failed_jobs.id;
 
 
 --
--- TOC entry 229 (class 1259 OID 29931)
+-- TOC entry 229 (class 1259 OID 30027)
 -- Name: incidencias; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -93,7 +93,7 @@ CREATE TABLE public.incidencias (
 ALTER TABLE public.incidencias OWNER TO postgres;
 
 --
--- TOC entry 228 (class 1259 OID 29930)
+-- TOC entry 228 (class 1259 OID 30026)
 -- Name: incidencias_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -117,7 +117,7 @@ ALTER SEQUENCE public.incidencias_id_seq OWNED BY public.incidencias.id;
 
 
 --
--- TOC entry 227 (class 1259 OID 29921)
+-- TOC entry 227 (class 1259 OID 30017)
 -- Name: infraestructuras; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -138,7 +138,7 @@ CREATE TABLE public.infraestructuras (
 ALTER TABLE public.infraestructuras OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 29920)
+-- TOC entry 226 (class 1259 OID 30016)
 -- Name: infraestructuras_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -162,7 +162,7 @@ ALTER SEQUENCE public.infraestructuras_id_seq OWNED BY public.infraestructuras.i
 
 
 --
--- TOC entry 218 (class 1259 OID 29870)
+-- TOC entry 218 (class 1259 OID 29966)
 -- Name: migrations; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -176,7 +176,7 @@ CREATE TABLE public.migrations (
 ALTER TABLE public.migrations OWNER TO postgres;
 
 --
--- TOC entry 217 (class 1259 OID 29869)
+-- TOC entry 217 (class 1259 OID 29965)
 -- Name: migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -201,7 +201,7 @@ ALTER SEQUENCE public.migrations_id_seq OWNED BY public.migrations.id;
 
 
 --
--- TOC entry 230 (class 1259 OID 29956)
+-- TOC entry 230 (class 1259 OID 30052)
 -- Name: notifications; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -220,7 +220,7 @@ CREATE TABLE public.notifications (
 ALTER TABLE public.notifications OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 29887)
+-- TOC entry 221 (class 1259 OID 29983)
 -- Name: password_resets; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -234,7 +234,7 @@ CREATE TABLE public.password_resets (
 ALTER TABLE public.password_resets OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 29907)
+-- TOC entry 225 (class 1259 OID 30003)
 -- Name: personal_access_tokens; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -255,7 +255,7 @@ CREATE TABLE public.personal_access_tokens (
 ALTER TABLE public.personal_access_tokens OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 29906)
+-- TOC entry 224 (class 1259 OID 30002)
 -- Name: personal_access_tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -279,7 +279,7 @@ ALTER SEQUENCE public.personal_access_tokens_id_seq OWNED BY public.personal_acc
 
 
 --
--- TOC entry 220 (class 1259 OID 29877)
+-- TOC entry 220 (class 1259 OID 29973)
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -300,7 +300,7 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 29876)
+-- TOC entry 219 (class 1259 OID 29972)
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -324,7 +324,7 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- TOC entry 4677 (class 2604 OID 29898)
+-- TOC entry 4677 (class 2604 OID 29994)
 -- Name: failed_jobs id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -332,7 +332,7 @@ ALTER TABLE ONLY public.failed_jobs ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 4681 (class 2604 OID 29934)
+-- TOC entry 4681 (class 2604 OID 30030)
 -- Name: incidencias id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -340,7 +340,7 @@ ALTER TABLE ONLY public.incidencias ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- TOC entry 4680 (class 2604 OID 29924)
+-- TOC entry 4680 (class 2604 OID 30020)
 -- Name: infraestructuras id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -348,7 +348,7 @@ ALTER TABLE ONLY public.infraestructuras ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 4674 (class 2604 OID 29873)
+-- TOC entry 4674 (class 2604 OID 29969)
 -- Name: migrations id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -356,7 +356,7 @@ ALTER TABLE ONLY public.migrations ALTER COLUMN id SET DEFAULT nextval('public.m
 
 
 --
--- TOC entry 4679 (class 2604 OID 29910)
+-- TOC entry 4679 (class 2604 OID 30006)
 -- Name: personal_access_tokens id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -364,7 +364,7 @@ ALTER TABLE ONLY public.personal_access_tokens ALTER COLUMN id SET DEFAULT nextv
 
 
 --
--- TOC entry 4675 (class 2604 OID 29880)
+-- TOC entry 4675 (class 2604 OID 29976)
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -372,7 +372,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
--- TOC entry 4864 (class 0 OID 29895)
+-- TOC entry 4864 (class 0 OID 29991)
 -- Dependencies: 223
 -- Data for Name: failed_jobs; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -382,33 +382,33 @@ COPY public.failed_jobs (id, uuid, connection, queue, payload, exception, failed
 
 
 --
--- TOC entry 4870 (class 0 OID 29931)
+-- TOC entry 4870 (class 0 OID 30027)
 -- Dependencies: 229
 -- Data for Name: incidencias; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.incidencias (id, tipo, ubicacion, descripcion, fecha, estado, prioridad, latitud, longitud, infraestructura_id, tecnico_id, ciudadano_id, created_at, updated_at) FROM stdin;
-1	Contenedor Lleno	Av. Principal 123	El contenedor está desbordado	2025-02-18 01:01:05	pendiente	alta	-33.44890000	-70.66930000	1	2	3	2025-02-18 01:01:05	2025-02-18 01:01:05
-2	Luz Dañada	Plaza Central	La luminaria no enciende	2025-02-18 01:01:05	en_proceso	media	-33.45000000	-70.67000000	2	2	3	2025-02-18 01:01:05	2025-02-18 01:01:05
-3	Semáforo Intermitente	Intersección Principal	El semáforo está en amarillo intermitente	2025-02-18 01:01:05	pendiente	critica	-33.45110000	-70.67110000	3	\N	3	2025-02-18 01:01:05	2025-02-18 01:01:05
+1	Contenedor Lleno	Av. Principal 123	El contenedor está desbordado	2025-02-18 01:05:11	pendiente	alta	-33.44890000	-70.66930000	1	2	3	2025-02-18 01:05:11	2025-02-18 01:05:11
+2	Luz Dañada	Plaza Central	La luminaria no enciende	2025-02-18 01:05:11	en_proceso	media	-33.45000000	-70.67000000	2	2	3	2025-02-18 01:05:11	2025-02-18 01:05:11
+3	Semáforo Intermitente	Intersección Principal	El semáforo está en amarillo intermitente	2025-02-18 01:05:11	pendiente	critica	-33.45110000	-70.67110000	3	\N	3	2025-02-18 01:05:11	2025-02-18 01:05:11
 \.
 
 
 --
--- TOC entry 4868 (class 0 OID 29921)
+-- TOC entry 4868 (class 0 OID 30017)
 -- Dependencies: 227
 -- Data for Name: infraestructuras; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.infraestructuras (id, tipo, ubicacion, descripcion, estado, ultima_revision, historial_mantenimiento, created_at, updated_at) FROM stdin;
-1	Contenedor de Basura	Av. Principal 123	Contenedor principal del sector	operativo	\N	\N	2025-02-18 01:01:05	2025-02-18 01:01:05
-2	Luminaria	Plaza Central	Poste de luz LED	mantenimiento	\N	\N	2025-02-18 01:01:05	2025-02-18 01:01:05
-3	Semáforo	Intersección Principal	Semáforo de 4 vías	operativo	\N	\N	2025-02-18 01:01:05	2025-02-18 01:01:05
+1	Contenedor de Basura	Av. Principal 123	Contenedor principal del sector	operativo	\N	\N	2025-02-18 01:05:11	2025-02-18 01:05:11
+2	Luminaria	Plaza Central	Poste de luz LED	mantenimiento	\N	\N	2025-02-18 01:05:11	2025-02-18 01:05:11
+3	Semáforo	Intersección Principal	Semáforo de 4 vías	operativo	\N	\N	2025-02-18 01:05:11	2025-02-18 01:05:11
 \.
 
 
 --
--- TOC entry 4859 (class 0 OID 29870)
+-- TOC entry 4859 (class 0 OID 29966)
 -- Dependencies: 218
 -- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -426,7 +426,7 @@ COPY public.migrations (id, migration, batch) FROM stdin;
 
 
 --
--- TOC entry 4871 (class 0 OID 29956)
+-- TOC entry 4871 (class 0 OID 30052)
 -- Dependencies: 230
 -- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -436,7 +436,7 @@ COPY public.notifications (id, type, notifiable_type, notifiable_id, data, read_
 
 
 --
--- TOC entry 4862 (class 0 OID 29887)
+-- TOC entry 4862 (class 0 OID 29983)
 -- Dependencies: 221
 -- Data for Name: password_resets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -446,7 +446,7 @@ COPY public.password_resets (email, token, created_at) FROM stdin;
 
 
 --
--- TOC entry 4866 (class 0 OID 29907)
+-- TOC entry 4866 (class 0 OID 30003)
 -- Dependencies: 225
 -- Data for Name: personal_access_tokens; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -456,16 +456,19 @@ COPY public.personal_access_tokens (id, tokenable_type, tokenable_id, name, toke
 
 
 --
--- TOC entry 4861 (class 0 OID 29877)
+-- TOC entry 4861 (class 0 OID 29973)
 -- Dependencies: 220
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.users (id, name, email, email_verified_at, password, remember_token, created_at, updated_at, role) FROM stdin;
-1	Administrador	admin@ciudadlimpia.com	2025-02-18 01:01:05	$2y$10$jMS0lWNEf9tAjctJKZV83e0DPMNIQD4oTsnWnWvKFnraWtl8Fmn5q	\N	2025-02-18 01:01:05	2025-02-18 01:01:05	admin
-4	Supervisor	supervisor@ciudadlimpia.com	\N	$2y$10$BSNWDyYfbeZaX.K2hvOg/ezb583RWlljxU7OqYhg3GLB/XpPjPVIC	\N	2025-02-18 01:01:06	2025-02-18 01:01:06	supervisor
-2	Técnico	tecnico@ciudadlimpia.com	2025-02-18 01:01:05	$2y$10$ozk0hN1HvrZtdIzNNAUtMu5ZEUcKhRKHwCF1QF/Gpc/ZZlAMZ0FhG	\N	2025-02-18 01:01:05	2025-02-18 01:01:06	tecnico
-3	Ciudadano	ciudadano@ciudadlimpia.com	2025-02-18 01:01:05	$2y$10$13J9E18fsfxB92LiSEEVIeVUQ6vg25Mw01U6rxnqtjQCwGfCr/NLG	\N	2025-02-18 01:01:05	2025-02-18 01:01:06	ciudadano
+1	Administrador	admin@ciudadlimpia.com	2025-02-18 01:05:10	$2y$10$PL3C75rV0ljPp636ipV9WeLGiKoD9Z2QG71/d6Nt9q7CUJo/QWyiW	\N	2025-02-18 01:05:10	2025-02-18 01:05:10	admin
+2	Técnico	tecnico@ciudadlimpia.com	2025-02-18 01:05:10	$2y$10$tMDIzR64Dg.4o7/vWWxWj.4uLMX45irYtXWmdmzcB0clsNW8aeCT2	\N	2025-02-18 01:05:10	2025-02-18 01:05:10	tecnico
+3	Ciudadano	ciudadano@ciudadlimpia.com	2025-02-18 01:05:11	$2y$10$2Mqh3tabP/wXysm06nQDnOiXf7lj4juetMM5T82Mxtp.TQ4kaizpu	\N	2025-02-18 01:05:11	2025-02-18 01:05:11	ciudadano
+4	Administrador	admin@test.com	\N	$2y$10$vPPBn90YuPJP.qE.nGQmyO1fX5McLE1OzDTvDhSveArzoikFSXc1S	\N	2025-02-18 01:05:11	2025-02-18 01:05:11	admin
+5	Supervisor	supervisor@test.com	\N	$2y$10$eArrrqsqyVxFunPX92RrLe5GSNGKrhwTL8s.WYu2FDv8Vegpsdbli	\N	2025-02-18 01:05:11	2025-02-18 01:05:11	supervisor
+6	Técnico	tecnico@test.com	\N	$2y$10$2oDmcLRI3RDMyhI//xtL6eC2ykz5U/VroOIf6Txxh8tcTrFMf82EW	\N	2025-02-18 01:05:11	2025-02-18 01:05:11	tecnico
+7	Ciudadano	ciudadano@test.com	\N	$2y$10$DjWX6qeGwaMimA094QZBT.C/8yWFjVvUKG2IL7hKK70Mv3wfWGqze	\N	2025-02-18 01:05:11	2025-02-18 01:05:11	ciudadano
 \.
 
 
@@ -520,11 +523,11 @@ SELECT pg_catalog.setval('public.personal_access_tokens_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 4, true);
+SELECT pg_catalog.setval('public.users_id_seq', 7, true);
 
 
 --
--- TOC entry 4695 (class 2606 OID 29903)
+-- TOC entry 4695 (class 2606 OID 29999)
 -- Name: failed_jobs failed_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -533,7 +536,7 @@ ALTER TABLE ONLY public.failed_jobs
 
 
 --
--- TOC entry 4697 (class 2606 OID 29905)
+-- TOC entry 4697 (class 2606 OID 30001)
 -- Name: failed_jobs failed_jobs_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -542,7 +545,7 @@ ALTER TABLE ONLY public.failed_jobs
 
 
 --
--- TOC entry 4706 (class 2606 OID 29940)
+-- TOC entry 4706 (class 2606 OID 30036)
 -- Name: incidencias incidencias_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -551,7 +554,7 @@ ALTER TABLE ONLY public.incidencias
 
 
 --
--- TOC entry 4704 (class 2606 OID 29929)
+-- TOC entry 4704 (class 2606 OID 30025)
 -- Name: infraestructuras infraestructuras_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -560,7 +563,7 @@ ALTER TABLE ONLY public.infraestructuras
 
 
 --
--- TOC entry 4687 (class 2606 OID 29875)
+-- TOC entry 4687 (class 2606 OID 29971)
 -- Name: migrations migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -569,7 +572,7 @@ ALTER TABLE ONLY public.migrations
 
 
 --
--- TOC entry 4709 (class 2606 OID 29963)
+-- TOC entry 4709 (class 2606 OID 30059)
 -- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -578,7 +581,7 @@ ALTER TABLE ONLY public.notifications
 
 
 --
--- TOC entry 4693 (class 2606 OID 29893)
+-- TOC entry 4693 (class 2606 OID 29989)
 -- Name: password_resets password_resets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -587,7 +590,7 @@ ALTER TABLE ONLY public.password_resets
 
 
 --
--- TOC entry 4699 (class 2606 OID 29914)
+-- TOC entry 4699 (class 2606 OID 30010)
 -- Name: personal_access_tokens personal_access_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -596,7 +599,7 @@ ALTER TABLE ONLY public.personal_access_tokens
 
 
 --
--- TOC entry 4701 (class 2606 OID 29917)
+-- TOC entry 4701 (class 2606 OID 30013)
 -- Name: personal_access_tokens personal_access_tokens_token_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -605,7 +608,7 @@ ALTER TABLE ONLY public.personal_access_tokens
 
 
 --
--- TOC entry 4689 (class 2606 OID 29886)
+-- TOC entry 4689 (class 2606 OID 29982)
 -- Name: users users_email_unique; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -614,7 +617,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4691 (class 2606 OID 29884)
+-- TOC entry 4691 (class 2606 OID 29980)
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -623,7 +626,7 @@ ALTER TABLE ONLY public.users
 
 
 --
--- TOC entry 4707 (class 1259 OID 29961)
+-- TOC entry 4707 (class 1259 OID 30057)
 -- Name: notifications_notifiable_type_notifiable_id_index; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -631,7 +634,7 @@ CREATE INDEX notifications_notifiable_type_notifiable_id_index ON public.notific
 
 
 --
--- TOC entry 4702 (class 1259 OID 29915)
+-- TOC entry 4702 (class 1259 OID 30011)
 -- Name: personal_access_tokens_tokenable_type_tokenable_id_index; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -639,7 +642,7 @@ CREATE INDEX personal_access_tokens_tokenable_type_tokenable_id_index ON public.
 
 
 --
--- TOC entry 4710 (class 2606 OID 29951)
+-- TOC entry 4710 (class 2606 OID 30047)
 -- Name: incidencias incidencias_ciudadano_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -648,7 +651,7 @@ ALTER TABLE ONLY public.incidencias
 
 
 --
--- TOC entry 4711 (class 2606 OID 29941)
+-- TOC entry 4711 (class 2606 OID 30037)
 -- Name: incidencias incidencias_infraestructura_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -657,7 +660,7 @@ ALTER TABLE ONLY public.incidencias
 
 
 --
--- TOC entry 4712 (class 2606 OID 29946)
+-- TOC entry 4712 (class 2606 OID 30042)
 -- Name: incidencias incidencias_tecnico_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -665,7 +668,7 @@ ALTER TABLE ONLY public.incidencias
     ADD CONSTRAINT incidencias_tecnico_id_foreign FOREIGN KEY (tecnico_id) REFERENCES public.users(id);
 
 
--- Completed on 2025-02-17 21:03:17
+-- Completed on 2025-02-17 21:27:12
 
 --
 -- PostgreSQL database dump complete

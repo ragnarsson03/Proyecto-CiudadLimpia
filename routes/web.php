@@ -4,7 +4,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfraestructuraController;
 use App\Http\Controllers\IncidenciaController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ExportController; // Agregado
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\OrdenTrabajoController;
+use App\Http\Controllers\MantenimientoPreventivoController;
+use App\Http\Controllers\PresupuestoController;
+use App\Http\Controllers\RutaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +34,7 @@ Route::get('/', function () {
 
 // Rutas de autenticación y dashboard
 Route::middleware(['auth', 'verified'])->group(function () {
+    // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,6 +46,36 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rutas de Incidencia
     Route::resource('incidencia', IncidenciaController::class);
+
+    // Rutas de Personal
+    Route::resource('personal', PersonalController::class);
+
+    // Rutas de Materiales
+    Route::resource('materiales', MaterialController::class);
+    Route::post('/materiales/{material}/ajustar-inventario', [MaterialController::class, 'ajustarInventario'])
+        ->name('materiales.ajustar-inventario');
+
+    // Rutas de Órdenes de Trabajo
+    Route::resource('ordenes', OrdenTrabajoController::class);
+
+    // Rutas de Mantenimiento Preventivo
+    Route::resource('mantenimiento', MantenimientoPreventivoController::class);
+    Route::post('/mantenimiento/generar-ordenes', [MantenimientoPreventivoController::class, 'generarOrdenes'])
+        ->name('mantenimiento.generar-ordenes');
+
+    // Rutas de Presupuestos
+    Route::resource('presupuestos', PresupuestoController::class);
+    Route::get('/presupuestos/export/pdf', [PresupuestoController::class, 'exportarPDF'])
+        ->name('presupuestos.export.pdf');
+    Route::get('/presupuestos/export/excel', [PresupuestoController::class, 'exportarExcel'])
+        ->name('presupuestos.export.excel');
+
+    // Rutas de Rutas
+    Route::resource('rutas', RutaController::class);
+    Route::post('/rutas/{ruta}/iniciar', [RutaController::class, 'iniciarRuta'])
+        ->name('rutas.iniciar');
+    Route::post('/rutas/{ruta}/finalizar', [RutaController::class, 'finalizarRuta'])
+        ->name('rutas.finalizar');
 
     // Rutas de Exportación
     Route::get('/export/incidencias/{format}', [ExportController::class, 'incidencias'])

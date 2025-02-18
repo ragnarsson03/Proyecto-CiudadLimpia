@@ -20,20 +20,20 @@ class DashboardController extends Controller
         $incidenciasQuery = Incidencia::query()
             ->with(['infraestructura', 'tecnico', 'ciudadano'])
             ->when($filtroEstado !== 'todos', function($query) use ($filtroEstado) {
-                return $query->where('estado', $filtroEstado);
+                return $query->where('incidencias.estado', $filtroEstado);
             })
             ->when($filtroInfraestructura !== 'todos', function($query) use ($filtroInfraestructura) {
-                return $query->where('infraestructura_id', $filtroInfraestructura);
+                return $query->where('incidencias.infraestructura_id', $filtroInfraestructura);
             })
             ->when($filtroPeriodo, function($query) use ($filtroPeriodo) {
-                return $query->where('fecha', '>=', now()->subDays($filtroPeriodo));
+                return $query->where('incidencias.fecha', '>=', now()->subDays($filtroPeriodo));
             });
 
         // Estadísticas de Infraestructura
         $totalInfraestructuras = Infraestructura::count();
-        $infraestructurasOperativas = Infraestructura::where('estado', 'operativo')->count();
-        $infraestructurasMantenimiento = Infraestructura::where('estado', 'mantenimiento')->count();
-        $infraestructurasFueraServicio = Infraestructura::where('estado', 'fuera_de_servicio')->count();
+        $infraestructurasOperativas = Infraestructura::where('infraestructuras.estado', 'operativo')->count();
+        $infraestructurasMantenimiento = Infraestructura::where('infraestructuras.estado', 'mantenimiento')->count();
+        $infraestructurasFueraServicio = Infraestructura::where('infraestructuras.estado', 'fuera_de_servicio')->count();
 
         // Infraestructuras más afectadas
         $infraestructurasMasAfectadas = DB::table('infraestructuras')
@@ -49,36 +49,45 @@ class DashboardController extends Controller
 
         // Estadísticas generales de incidencias
         $totalIncidencias = $incidenciasQuery->count();
-        $incidenciasHoy = $incidenciasQuery->clone()->whereDate('fecha', today())->count();
+        $incidenciasHoy = $incidenciasQuery->clone()->whereDate('incidencias.fecha', today())->count();
 
         // Estadísticas por estado de incidencias
         $incidenciasPorEstado = $incidenciasQuery->clone()
-            ->select('estado', DB::raw('count(*) as total'))
-            ->groupBy('estado')
+            ->select('incidencias.estado', DB::raw('count(*) as total'))
+            ->groupBy('incidencias.estado')
             ->pluck('total', 'estado')
             ->toArray();
 
         // Estadísticas por tipo de infraestructura
-        $incidenciasPorTipo = $incidenciasQuery->clone()
+        $incidenciasPorTipo = DB::table('incidencias')
             ->join('infraestructuras', 'incidencias.infraestructura_id', '=', 'infraestructuras.id')
-            ->select('infraestructuras.tipo', DB::raw('count(*) as total'))
+            ->select(DB::raw('infraestructuras.tipo'), DB::raw('count(*) as total'))
+            ->when($filtroEstado !== 'todos', function($query) use ($filtroEstado) {
+                return $query->where('incidencias.estado', $filtroEstado);
+            })
+            ->when($filtroInfraestructura !== 'todos', function($query) use ($filtroInfraestructura) {
+                return $query->where('incidencias.infraestructura_id', $filtroInfraestructura);
+            })
+            ->when($filtroPeriodo, function($query) use ($filtroPeriodo) {
+                return $query->where('incidencias.fecha', '>=', now()->subDays($filtroPeriodo));
+            })
             ->groupBy('infraestructuras.tipo')
             ->pluck('total', 'tipo')
             ->toArray();
 
         // Últimas incidencias
         $ultimasIncidencias = $incidenciasQuery->clone()
-            ->latest('fecha')
+            ->latest('incidencias.fecha')
             ->take(5)
             ->get();
 
         // Últimas infraestructuras actualizadas
-        $ultimasInfraestructuras = Infraestructura::latest('updated_at')
+        $ultimasInfraestructuras = Infraestructura::latest('infraestructuras.updated_at')
             ->take(5)
             ->get();
 
         // Lista de infraestructuras para el filtro
-        $infraestructuras = Infraestructura::select('id', 'tipo', 'ubicacion')->get();
+        $infraestructuras = Infraestructura::select('infraestructuras.id', 'infraestructuras.tipo', 'infraestructuras.ubicacion')->get();
 
         return view('dashboard', compact(
             'totalInfraestructuras',
