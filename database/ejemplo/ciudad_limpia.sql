@@ -5,7 +5,7 @@
 -- Dumped from database version 17.0
 -- Dumped by pg_dump version 17.0
 
--- Started on 2025-02-18 02:17:30
+-- Started on 2025-02-18 03:13:59
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1419,7 +1419,7 @@ ALTER TABLE ONLY public.rutas
     ADD CONSTRAINT rutas_personal_id_foreign FOREIGN KEY (personal_id) REFERENCES public.personal(id);
 
 
--- Completed on 2025-02-18 02:17:30
+-- Completed on 2025-02-18 03:13:59
 
 --
 -- PostgreSQL database dump complete

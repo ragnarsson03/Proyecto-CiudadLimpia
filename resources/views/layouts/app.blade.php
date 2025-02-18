@@ -12,11 +12,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        {{-- Comentar o reemplazar estas líneas temporalmente
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        --}}
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <script src="{{ asset('js/app.js') }}" defer></script>
         
         <!-- AlpineJS para notificaciones -->
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
