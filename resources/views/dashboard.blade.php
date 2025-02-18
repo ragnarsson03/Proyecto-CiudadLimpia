@@ -182,13 +182,13 @@
                     <!-- Gráfico de Incidencias por Estado -->
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Incidencias por Estado</h3>
-                        <canvas id="incidenciasPorEstadoChart"></canvas>
+                        <canvas id="estadosChart"></canvas>
                     </div>
 
                     <!-- Gráfico de Incidencias por Tipo -->
                     <div class="bg-white p-6 rounded-lg shadow-sm">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Incidencias por Tipo de Infraestructura</h3>
-                        <canvas id="incidenciasPorTipoChart"></canvas>
+                        <canvas id="tiposChart"></canvas>
                     </div>
                 @endif
             </div>
@@ -207,17 +207,30 @@
                         <h3 class="text-lg font-medium text-gray-900 mb-4">Últimas Incidencias</h3>
                         <div class="space-y-4">
                             @foreach($ultimasIncidencias as $incidencia)
-                                <div class="border-l-4 {{ $incidencia->estado === 'pendiente' ? 'border-yellow-500' : ($incidencia->estado === 'en_proceso' ? 'border-blue-500' : 'border-green-500') }} pl-4 py-2">
+                                <div class="border-l-4 {{ $incidencia['estado'] === 'pendiente' ? 'border-yellow-500' : ($incidencia['estado'] === 'en_proceso' ? 'border-blue-500' : 'border-green-500') }} pl-4 py-2">
                                     <div class="flex justify-between items-start">
                                         <div>
-                                            <p class="text-sm font-medium text-gray-900">{{ $incidencia->infraestructura->tipo }}</p>
-                                            <p class="text-sm text-gray-500">{{ $incidencia->fecha->format('d/m/Y H:i') }}</p>
-                                            <p class="text-sm text-gray-600">{{ Str::limit($incidencia->descripcion, 100) }}</p>
+                                            <h4 class="text-lg font-semibold">{{ $incidencia['infraestructura']['tipo'] }}</h4>
+                                            <p class="text-sm text-gray-600">{{ $incidencia['infraestructura']['ubicacion'] }}</p>
+                                            <p class="text-sm mt-1">{{ $incidencia['descripcion'] }}</p>
                                         </div>
-                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $incidencia->prioridad === 'baja' ? 'bg-green-100 text-green-800' : ($incidencia->prioridad === 'media' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') }}">
-                                            {{ ucfirst($incidencia->prioridad) }}
-                                        </span>
+                                        <div class="text-right">
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                                {{ $incidencia['estado'] === 'pendiente' ? 'bg-yellow-100 text-yellow-800' : 
+                                                   ($incidencia['estado'] === 'en_proceso' ? 'bg-blue-100 text-blue-800' : 
+                                                    'bg-green-100 text-green-800') }}">
+                                                {{ ucfirst(str_replace('_', ' ', $incidencia['estado'])) }}
+                                            </span>
+                                            <p class="text-xs text-gray-500 mt-1">
+                                                {{ \Carbon\Carbon::parse($incidencia['fecha'])->diffForHumans() }}
+                                            </p>
+                                        </div>
                                     </div>
+                                    @if($incidencia['tecnico'])
+                                        <p class="text-sm text-gray-600 mt-2">
+                                            <span class="font-medium">Técnico:</span> {{ $incidencia['tecnico']['nombre'] }}
+                                        </p>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
@@ -231,85 +244,206 @@
     <link href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" rel="stylesheet">
     
     <script>
-        // Configuración de gráficos
+        // Datos del controlador
         const estadosData = {!! json_encode($incidenciasPorEstado) !!};
         const tiposData = {!! json_encode($incidenciasPorTipo) !!};
+        const incidencias = {!! json_encode($ultimasIncidencias) !!};
 
-        // Gráfico de Incidencias por Estado
-        if (document.getElementById('incidenciasPorEstadoChart')) {
-            new Chart(document.getElementById('incidenciasPorEstadoChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(estadosData),
-                    datasets: [{
-                        data: Object.values(estadosData),
-                        backgroundColor: ['#FCD34D', '#60A5FA', '#34D399', '#F87171']
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { position: 'bottom' }
-                    }
-                }
-            });
-        }
+        // Configuración de colores para los gráficos
+        const colors = {
+            pendiente: '#FFA500',
+            en_proceso: '#3498db',
+            resuelto: '#2ecc71',
+            cancelado: '#e74c3c'
+        };
 
-        // Gráfico de Incidencias por Tipo
-        if (document.getElementById('incidenciasPorTipoChart')) {
-            new Chart(document.getElementById('incidenciasPorTipoChart'), {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(tiposData),
-                    datasets: [{
-                        label: 'Número de Incidencias',
-                        data: Object.values(tiposData),
-                        backgroundColor: '#4F46E5'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: { stepSize: 1 }
+        // Configuración del gráfico circular
+        const ctxEstados = document.getElementById('estadosChart').getContext('2d');
+        new Chart(ctxEstados, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(estadosData),
+                datasets: [{
+                    data: Object.values(estadosData),
+                    backgroundColor: Object.keys(estadosData).map(estado => colors[estado] || '#95a5a6'),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Incidencias por Estado',
+                        font: {
+                            size: 16
                         }
                     }
                 }
-            });
-        }
+            }
+        });
 
-        // Mapa
-        const mapElement = document.getElementById('incidenciasMap');
-        if (mapElement) {
-            const map = L.map('incidenciasMap').setView([-33.4489, -70.6693], 13);
+        // Configuración del gráfico de barras
+        const ctxTipos = document.getElementById('tiposChart').getContext('2d');
+        new Chart(ctxTipos, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(tiposData),
+                datasets: [{
+                    label: 'Total de Incidencias',
+                    data: Object.values(tiposData).map(item => item.total),
+                    backgroundColor: '#3498db',
+                    borderColor: '#2980b9',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Incidencias por Tipo de Infraestructura',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        });
+
+        // Inicialización y configuración del mapa
+        if (document.getElementById('incidenciasMap')) {
+            const map = L.map('incidenciasMap').setView([-33.4569, -70.6483], 13);
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: ' OpenStreetMap contributors'
+                attribution: ' OpenStreetMap contributors',
+                maxZoom: 19
             }).addTo(map);
 
-            const incidenciasData = {!! json_encode($ultimasIncidencias->map(function($i) {
-                return [
-                    'lat' => $i->latitud,
-                    'lng' => $i->longitud,
-                    'title' => $i->infraestructura->tipo,
-                    'estado' => $i->estado,
-                    'prioridad' => $i->prioridad
-                ];
-            })) !!};
+            // Función para obtener el color del marcador según el estado
+            const getMarkerColor = (estado) => colors[estado] || '#95a5a6';
 
-            incidenciasData.forEach(function(i) {
-                if (i.lat && i.lng) {
-                    L.marker([i.lat, i.lng])
-                        .bindPopup(`
-                            <strong>${i.title}</strong><br>
-                            Estado: ${i.estado}<br>
-                            Prioridad: ${i.prioridad}
-                        `)
-                        .addTo(map);
+            // Crear marcadores personalizados para cada incidencia
+            incidencias.forEach(incidencia => {
+                const infraestructura = incidencia.infraestructura;
+                if (infraestructura && infraestructura.latitud && infraestructura.longitud) {
+                    const markerHtml = `
+                        <div class="marker-pin" style="background-color: ${getMarkerColor(incidencia.estado)}">
+                            <span class="marker-number">${incidencia.id}</span>
+                        </div>
+                    `;
+
+                    const icon = L.divIcon({
+                        html: markerHtml,
+                        className: 'custom-marker',
+                        iconSize: [30, 42],
+                        iconAnchor: [15, 42]
+                    });
+
+                    const marker = L.marker(
+                        [infraestructura.latitud, infraestructura.longitud],
+                        { icon: icon }
+                    ).addTo(map);
+
+                    // Popup personalizado con información detallada
+                    const popupContent = `
+                        <div class="popup-content">
+                            <h3 class="text-lg font-bold mb-2">${infraestructura.tipo}</h3>
+                            <p class="text-sm mb-1"><strong>Estado:</strong> ${incidencia.estado}</p>
+                            <p class="text-sm mb-1"><strong>Ubicación:</strong> ${infraestructura.ubicacion}</p>
+                            <p class="text-sm mb-1"><strong>Fecha:</strong> ${new Date(incidencia.fecha).toLocaleDateString()}</p>
+                            <p class="text-sm"><strong>Descripción:</strong> ${incidencia.descripcion}</p>
+                            ${incidencia.tecnico ? `
+                                <p class="text-sm mt-2"><strong>Técnico:</strong> ${incidencia.tecnico.nombre}</p>
+                            ` : ''}
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupContent);
                 }
             });
+
+            // Ajustar el mapa para mostrar todos los marcadores
+            const markers = Object.values(map._layers).filter(layer => layer instanceof L.Marker);
+            if (markers.length > 0) {
+                const group = L.featureGroup(markers);
+                map.fitBounds(group.getBounds().pad(0.1));
+            }
         }
     </script>
+
+    <style>
+        .custom-marker {
+            background: none;
+            border: none;
+        }
+
+        .marker-pin {
+            width: 30px;
+            height: 42px;
+            border-radius: 50% 50% 50% 0;
+            position: relative;
+            transform: rotate(-45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .marker-number {
+            transform: rotate(45deg);
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .popup-content {
+            padding: 10px;
+            max-width: 250px;
+        }
+
+        .popup-content h3 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .popup-content p {
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+
+        #incidenciasMap {
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+        }
+    </style>
     @endpush
 </x-app-layout>

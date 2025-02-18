@@ -37,17 +37,23 @@ class DashboardController extends Controller
 
         // Estadísticas de Infraestructura
         $totalInfraestructuras = Infraestructura::count();
-        $infraestructurasOperativas = Infraestructura::where('infraestructuras.estado', 'operativo')->count();
-        $infraestructurasMantenimiento = Infraestructura::where('infraestructuras.estado', 'mantenimiento')->count();
-        $infraestructurasFueraServicio = Infraestructura::where('infraestructuras.estado', 'fuera_de_servicio')->count();
+        $infraestructurasOperativas = Infraestructura::where('estado', 'operativo')->count();
+        $infraestructurasMantenimiento = Infraestructura::where('estado', 'mantenimiento')->count();
+        $infraestructurasFueraServicio = Infraestructura::where('estado', 'fuera_de_servicio')->count();
 
-        // Infraestructuras más afectadas
+        // Infraestructuras más afectadas con detalles
         $infraestructurasMasAfectadas = DB::table('infraestructuras')
-            ->select('infraestructuras.*')
-            ->selectRaw('COUNT(incidencias.id) as total_incidencias')
+            ->select(
+                'infraestructuras.id',
+                'infraestructuras.tipo',
+                'infraestructuras.ubicacion',
+                'infraestructuras.estado',
+                DB::raw('COUNT(incidencias.id) as total_incidencias'),
+                DB::raw("SUM(CASE WHEN incidencias.prioridad = 'alta' THEN 1 ELSE 0 END) as incidencias_urgentes")
+            )
             ->leftJoin('incidencias', 'infraestructuras.id', '=', 'incidencias.infraestructura_id')
             ->where('incidencias.fecha', '>=', now()->subDays($filtroPeriodo))
-            ->groupBy('infraestructuras.id')
+            ->groupBy('infraestructuras.id', 'infraestructuras.tipo', 'infraestructuras.ubicacion', 'infraestructuras.estado')
             ->havingRaw('COUNT(incidencias.id) > 0')
             ->orderByRaw('COUNT(incidencias.id) DESC')
             ->take(5)
@@ -57,17 +63,29 @@ class DashboardController extends Controller
         $totalIncidencias = $incidenciasQuery->count();
         $incidenciasHoy = $incidenciasQuery->clone()->whereDate('incidencias.fecha', today())->count();
 
-        // Estadísticas por estado de incidencias
+        // Estadísticas por estado
         $incidenciasPorEstado = $incidenciasQuery->clone()
-            ->select('incidencias.estado', DB::raw('count(*) as total'))
-            ->groupBy('incidencias.estado')
+            ->select('estado', DB::raw('count(*) as total'))
+            ->groupBy('estado')
             ->pluck('total', 'estado')
             ->toArray();
+
+        // Asegurarse de que todos los estados posibles estén presentes
+        $estadosPosibles = ['pendiente', 'en_proceso', 'resuelto', 'cancelado'];
+        foreach ($estadosPosibles as $estado) {
+            if (!isset($incidenciasPorEstado[$estado])) {
+                $incidenciasPorEstado[$estado] = 0;
+            }
+        }
 
         // Estadísticas por tipo de infraestructura
         $incidenciasPorTipo = DB::table('incidencias')
             ->join('infraestructuras', 'incidencias.infraestructura_id', '=', 'infraestructuras.id')
-            ->select(DB::raw('infraestructuras.tipo'), DB::raw('count(*) as total'))
+            ->select(
+                'infraestructuras.tipo',
+                DB::raw('count(*) as total'),
+                DB::raw('(count(*) * 100.0 / (select count(*) from incidencias)) as porcentaje')
+            )
             ->when($filtroEstado !== 'todos', function($query) use ($filtroEstado) {
                 return $query->where('incidencias.estado', $filtroEstado);
             })
@@ -78,39 +96,60 @@ class DashboardController extends Controller
                 return $query->where('incidencias.fecha', '>=', now()->subDays($filtroPeriodo));
             })
             ->groupBy('infraestructuras.tipo')
-            ->pluck('total', 'tipo')
+            ->get()
+            ->mapWithKeys(function ($item) {
+                return [$item->tipo => [
+                    'total' => (int)$item->total,
+                    'porcentaje' => round($item->porcentaje, 2)
+                ]];
+            })
             ->toArray();
 
-        // Últimas incidencias
-        $ultimasIncidencias = $incidenciasQuery->clone()
-            ->latest('incidencias.fecha')
-            ->take(5)
+        // Últimas incidencias con detalles completos
+        $ultimasIncidencias = Incidencia::with(['infraestructura', 'tecnico', 'ciudadano'])
+            ->orderBy('fecha', 'desc')
+            ->take(10)
+            ->get()
+            ->map(function ($incidencia) {
+                $infraestructura = $incidencia->infraestructura;
+                return [
+                    'id' => $incidencia->id,
+                    'estado' => $incidencia->estado,
+                    'descripcion' => $incidencia->descripcion,
+                    'fecha' => $incidencia->fecha,
+                    'prioridad' => $incidencia->prioridad,
+                    'infraestructura' => $infraestructura ? [
+                        'id' => $infraestructura->id,
+                        'tipo' => $infraestructura->tipo,
+                        'ubicacion' => $infraestructura->ubicacion,
+                        'latitud' => (float)$infraestructura->latitud,
+                        'longitud' => (float)$infraestructura->longitud,
+                        'estado' => $infraestructura->estado
+                    ] : null,
+                    'tecnico' => $incidencia->tecnico ? [
+                        'id' => $incidencia->tecnico->id,
+                        'nombre' => $incidencia->tecnico->name,
+                        'email' => $incidencia->tecnico->email
+                    ] : null,
+                    'ciudadano' => $incidencia->ciudadano ? [
+                        'id' => $incidencia->ciudadano->id,
+                        'nombre' => $incidencia->ciudadano->name,
+                        'email' => $incidencia->ciudadano->email
+                    ] : null
+                ];
+            })
+            ->toArray();
+
+        // Obtener todas las infraestructuras para el filtro
+        $infraestructuras = Infraestructura::select('id', 'tipo', 'ubicacion')
+            ->orderBy('tipo')
+            ->orderBy('ubicacion')
             ->get();
-
-        // Últimas infraestructuras actualizadas
-        $ultimasInfraestructuras = Infraestructura::latest('infraestructuras.updated_at')
-            ->take(5)
-            ->get();
-
-        // Estadísticas de Mantenimiento Preventivo
-        $mantenimientosPendientes = MantenimientoPreventivo::where('proxima_ejecucion', '<=', now())
-            ->where('activo', true)
-            ->count();
-            
-        $mantenimientosProximos = MantenimientoPreventivo::where('proxima_ejecucion', '>', now())
-            ->where('proxima_ejecucion', '<=', now()->addDays(7))
-            ->where('activo', true)
-            ->count();
-            
-        $costoMantenimientoMensual = MantenimientoPreventivo::where('activo', true)
-            ->where('proxima_ejecucion', '>=', now()->startOfMonth())
-            ->where('proxima_ejecucion', '<=', now()->endOfMonth())
-            ->sum('costo_estimado');
-
-        // Lista de infraestructuras para el filtro
-        $infraestructuras = Infraestructura::select('infraestructuras.id', 'infraestructuras.tipo', 'infraestructuras.ubicacion')->get();
 
         return view('dashboard', compact(
+            'filtroEstado',
+            'filtroInfraestructura',
+            'filtroPeriodo',
             'totalInfraestructuras',
             'infraestructurasOperativas',
             'infraestructurasMantenimiento',
@@ -121,14 +160,7 @@ class DashboardController extends Controller
             'incidenciasPorEstado',
             'incidenciasPorTipo',
             'ultimasIncidencias',
-            'ultimasInfraestructuras',
-            'mantenimientosPendientes',
-            'mantenimientosProximos',
-            'costoMantenimientoMensual',
-            'infraestructuras',
-            'filtroEstado',
-            'filtroInfraestructura',
-            'filtroPeriodo'
+            'infraestructuras'
         ));
     }
 }

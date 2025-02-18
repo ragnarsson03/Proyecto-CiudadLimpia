@@ -4,14 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateIncidenciasTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
@@ -19,24 +14,20 @@ return new class extends Migration
             $table->string('ubicacion');
             $table->text('descripcion');
             $table->timestamp('fecha');
-            $table->enum('estado', ['pendiente', 'en_proceso', 'resuelto', 'cancelado']);
-            $table->enum('prioridad', ['baja', 'media', 'alta', 'critica']);
+            $table->string('estado')->default('pendiente');
+            $table->string('prioridad');
             $table->decimal('latitud', 10, 8)->nullable();
             $table->decimal('longitud', 11, 8)->nullable();
-            $table->foreignId('infraestructura_id')->constrained('infraestructuras')->onDelete('cascade');
+            $table->foreignId('infraestructura_id')->constrained();
             $table->foreignId('tecnico_id')->nullable()->constrained('users');
             $table->foreignId('ciudadano_id')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('incidencias');
     }
-};
+}
