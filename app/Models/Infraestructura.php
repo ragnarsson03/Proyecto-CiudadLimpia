@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Incidencia;
 use App\Models\MantenimientoPreventivo;
+use App\Models\TipoInfraestructura;
 
 class Infraestructura extends Model
 {
@@ -24,8 +25,10 @@ class Infraestructura extends Model
     ];
 
     protected $casts = [
+        'historial_mantenimiento' => 'json',
         'ultima_revision' => 'datetime',
-        'historial_mantenimiento' => 'array'
+        'latitud' => 'decimal:8',
+        'longitud' => 'decimal:8'
     ];
 
     public const TIPOS = [
@@ -40,6 +43,11 @@ class Infraestructura extends Model
         'mantenimiento',
         'fuera_de_servicio'
     ];
+
+    public function tipoInfraestructura()
+    {
+        return $this->belongsTo(TipoInfraestructura::class);
+    }
 
     public function incidencias()
     {

@@ -146,6 +146,43 @@ class DashboardController extends Controller
             ->orderBy('ubicacion')
             ->get();
 
+        // Obtener incidencias por estado
+        $incidenciasPorEstado = Incidencia::select('estado', DB::raw('count(*) as total'))
+            ->whereNull('deleted_at')
+            ->groupBy('estado')
+            ->get()
+            ->pluck('total', 'estado')
+            ->toArray();
+
+        // Asegurar que todos los estados estén presentes
+        $estados = ['pendiente', 'en_proceso', 'resuelto', 'cancelado'];
+        foreach ($estados as $estado) {
+            if (!isset($incidenciasPorEstado[$estado])) {
+                $incidenciasPorEstado[$estado] = 0;
+            }
+        }
+
+        // Obtener incidencias por tipo de infraestructura
+        $incidenciasPorTipo = Infraestructura::select('infraestructuras.tipo', DB::raw('count(incidencias.id) as total'))
+            ->leftJoin('incidencias', 'infraestructuras.id', '=', 'incidencias.infraestructura_id')
+            ->whereNull('infraestructuras.deleted_at')
+            ->groupBy('infraestructuras.tipo')
+            ->get();
+
+        // Obtener marcadores para el mapa desde la tabla incidencias
+        $marcadores = Incidencia::select(
+                'incidencias.id',
+                'infraestructuras.tipo as nombre',
+                DB::raw('CAST(incidencias.latitud AS DECIMAL(10,8)) as latitud'),
+                DB::raw('CAST(incidencias.longitud AS DECIMAL(11,8)) as longitud')
+            )
+            ->join('infraestructuras', 'incidencias.infraestructura_id', '=', 'infraestructuras.id')
+            ->whereNotNull('incidencias.latitud')
+            ->whereNotNull('incidencias.longitud')
+            ->whereNull('incidencias.deleted_at')
+            ->whereNull('infraestructuras.deleted_at')
+            ->get();
+
         return view('dashboard', compact(
             'filtroEstado',
             'filtroInfraestructura',
@@ -160,7 +197,8 @@ class DashboardController extends Controller
             'incidenciasPorEstado',
             'incidenciasPorTipo',
             'ultimasIncidencias',
-            'infraestructuras'
+            'infraestructuras',
+            'marcadores'
         ));
     }
 }
