@@ -47,6 +47,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Rutas de Infraestructura
     Route::resource('infraestructura', InfraestructuraController::class);
+    Route::get('infraestructura-mapa', [InfraestructuraController::class, 'mapa'])
+        ->name('infraestructura.mapa');
 
     // Rutas de Incidencias
     Route::resource('incidencias', IncidenciaController::class);

@@ -69,14 +69,19 @@ class User extends Authenticatable
         return in_array($this->role, (array) $roles);
     }
 
-    public function incidenciasAsignadas()
+    public function personal()
     {
-        return $this->hasMany(Incidencia::class, 'tecnico_id');
+        return $this->hasOne(Personal::class);
     }
 
-    public function incidenciasReportadas()
+    public function incidents()
     {
-        return $this->hasMany(Incidencia::class, 'ciudadano_id');
+        return $this->hasMany(Incident::class, 'tecnico_id');
+    }
+
+    public function reportedIncidents()
+    {
+        return $this->hasMany(Incident::class, 'ciudadano_id');
     }
 
     public function receivesBroadcastNotificationsOn()

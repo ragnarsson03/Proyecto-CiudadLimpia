@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Incidencia;
 use App\Models\MantenimientoPreventivo;
 use App\Models\TipoInfraestructura;
+use App\Models\OrdenTrabajo;
 
 class Infraestructura extends Model
 {
@@ -21,11 +22,13 @@ class Infraestructura extends Model
         'descripcion',
         'estado',
         'ultima_revision',
-        'historial_mantenimiento'
+        'historial_mantenimiento',
+        'latitud',
+        'longitud'
     ];
 
     protected $casts = [
-        'historial_mantenimiento' => 'json',
+        'historial_mantenimiento' => 'array',
         'ultima_revision' => 'datetime',
         'latitud' => 'decimal:8',
         'longitud' => 'decimal:8'
@@ -54,9 +57,14 @@ class Infraestructura extends Model
         return $this->hasMany(Incidencia::class);
     }
 
-    public function mantenimientos()
+    public function mantenimientosPreventivos()
     {
         return $this->hasMany(MantenimientoPreventivo::class);
+    }
+
+    public function ordenesTrabajos()
+    {
+        return $this->hasMany(OrdenTrabajo::class);
     }
 
     public function scopeOperativas($query)
