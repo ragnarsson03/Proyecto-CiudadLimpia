@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Controllers\Api\IncidentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/incidencias', [ApiController::class, 'consultarIncidencias']);
     Route::get('/infraestructuras', [ApiController::class, 'consultarInfraestructuras']);
     Route::get('/estadisticas', [ApiController::class, 'obtenerEstadisticas']);
+    Route::get('/incidents', [IncidentController::class, 'index']);
 });

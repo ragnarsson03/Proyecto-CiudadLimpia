@@ -9,24 +9,17 @@ class Infrastructure extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'infraestructuras';
-
+    protected $table = 'infrastructures';
+    
     protected $fillable = [
-        'tipo',
-        'ubicacion',
+        'nombre',
         'descripcion',
-        'estado',
-        'ultima_revision',
-        'historial_mantenimiento'
-    ];
-
-    protected $casts = [
-        'historial_mantenimiento' => 'array',
-        'ultima_revision' => 'datetime'
+        'latitude',
+        'longitude'
     ];
 
     public function incidents()
     {
-        return $this->hasMany(Incident::class, 'infraestructura_id');
+        return $this->hasMany(Incident::class);
     }
-} 
+}

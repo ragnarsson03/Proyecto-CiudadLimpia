@@ -9,34 +9,56 @@ class Incident extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'incidencias';
+    protected $table = 'incidents';
 
     protected $fillable = [
-        'tipo',
-        'ubicacion',
-        'descripcion',
-        'fecha',
-        'estado',
-        'prioridad',
-        'latitud',
-        'longitud',
-        'infraestructura_id',
-        'tecnico_id',
-        'ciudadano_id'
+        'title',
+        'description',
+        'infrastructure_id',
+        'status_id',
+        'priority',
+        'latitude',
+        'longitude',
+        'user_id',
+        'assigned_to'
     ];
 
     public function infrastructure()
     {
-        return $this->belongsTo(Infrastructure::class, 'infraestructura_id');
+        return $this->belongsTo(Infrastructure::class);
     }
 
-    public function technician()
+    public function status()
     {
-        return $this->belongsTo(User::class, 'tecnico_id');
+        return $this->belongsTo(Status::class);
     }
 
-    public function citizen()
+    public function assignedTo()
     {
-        return $this->belongsTo(User::class, 'ciudadano_id');
+        return $this->belongsTo(User::class, 'assigned_to');
     }
-} 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function history()
+    {
+        return $this->hasMany(IncidentHistory::class);
+    }
+
+    public function photos()
+    {
+        return $this->hasMany(IncidentPhoto::class);
+    }
+
+    public function getPriorityColorAttribute()
+    {
+        return [
+            'Alta' => 'danger',
+            'Media' => 'warning',
+            'Baja' => 'info'
+        ][$this->priority] ?? 'secondary';
+    }
+}
