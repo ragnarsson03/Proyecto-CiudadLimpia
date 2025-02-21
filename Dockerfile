@@ -38,16 +38,12 @@ RUN composer install --no-dev --optimize-autoloader
 # Configurar permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Crear archivo .env y configurar
-RUN cp .env.example .env && \
-    php artisan key:generate && \
-    php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache && \
-    php artisan migrate --force
+# Crear script de inicio
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Exponer puerto
 EXPOSE 80
 
 # Comando para iniciar
-CMD ["apache2-foreground"]
+CMD ["/usr/local/bin/docker-entrypoint.sh"]
