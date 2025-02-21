@@ -10,10 +10,12 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     postgresql-client \
-    libpq-dev
+    libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
 
-# Instalar extensiones PHP
-RUN docker-php-ext-install pdo pdo_pgsql mbstring exif pcntl bcmath gd
+# Instalar extensiones PHP adicionales
+RUN docker-php-ext-install mbstring exif pcntl bcmath gd
 
 # Habilitar mod_rewrite
 RUN a2enmod rewrite
@@ -31,14 +33,18 @@ WORKDIR /var/www/html
 COPY . .
 
 # Instalar dependencias y optimizar
-RUN composer install --no-dev --optimize-autoloader && \
+RUN composer install --no-dev --optimize-autoloader
+
+# Configurar permisos
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Crear archivo .env y configurar
+RUN cp .env.example .env && \
+    php artisan key:generate && \
     php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache && \
     php artisan migrate --force
-
-# Configurar permisos
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Exponer puerto
 EXPOSE 80
