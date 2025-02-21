@@ -30,16 +30,18 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . .
 
-# Instalar dependencias
-RUN composer install --no-dev --optimize-autoloader
+# Instalar dependencias y optimizar
+RUN composer install --no-dev --optimize-autoloader && \
+    php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache && \
+    php artisan migrate --force
 
 # Configurar permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Generar key
-RUN php artisan key:generate
-
 # Exponer puerto
 EXPOSE 80
 
+# Comando para iniciar
 CMD ["apache2-foreground"]
