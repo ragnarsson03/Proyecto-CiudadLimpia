@@ -1,304 +1,339 @@
-on.lo
-#11 51.20  cc -I. -I/usr/src/php/ext/gd -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16 -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I/usr/src/php/ext/gd/libgd -DZEND_COMPILE_DL_EXT=1 -c /usr/src/php/ext/gd/libgd/gd_interpolation.c -MMD -MF libgd/gd_interpolation.dep -MT libgd/gd_interpolation.lo  -fPIC -DPIC -o libgd/.libs/gd_interpolation.o
-#11 51.97 /bin/bash /usr/src/php/ext/gd/libtool --mode=compile cc -I. -I/usr/src/php/ext/gd -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64   -I/usr/src/php/ext/gd/libgd -DZEND_COMPILE_DL_EXT=1 -c /usr/src/php/ext/gd/libgd/gd_matrix.c -o libgd/gd_matrix.lo  -MMD -MF libgd/gd_matrix.dep -MT libgd/gd_matrix.lo
-#11 52.08  cc -I. -I/usr/src/php/ext/gd -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16 -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I/usr/src/php/ext/gd/libgd -DZEND_COMPILE_DL_EXT=1 -c /usr/src/php/ext/gd/libgd/gd_matrix.c -MMD -MF libgd/gd_matrix.dep -MT libgd/gd_matrix.lo  -fPIC -DPIC -o libgd/.libs/gd_matrix.o
-#11 52.17 /bin/bash /usr/src/php/ext/gd/libtool --mode=compile cc -I. -I/usr/src/php/ext/gd -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64   -I/usr/src/php/ext/gd/libgd -DZEND_COMPILE_DL_EXT=1 -c /usr/src/php/ext/gd/libgd/gd_bmp.c -o libgd/gd_bmp.lo  -MMD -MF libgd/gd_bmp.dep -MT libgd/gd_bmp.lo
-#11 52.27  cc -I. -I/usr/src/php/ext/gd -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16 -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I/usr/src/php/ext/gd/libgd -DZEND_COMPILE_DL_EXT=1 -c /usr/src/php/ext/gd/libgd/gd_bmp.c -MMD -MF libgd/gd_bmp.dep -MT libgd/gd_bmp.lo  -fPIC -DPIC -o libgd/.libs/gd_bmp.o
-#11 52.58 /bin/bash /usr/src/php/ext/gd/libtool --mode=compile cc -I. -I/usr/src/php/ext/gd -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64   -I/usr/src/php/ext/gd/libgd -DZEND_COMPILE_DL_EXT=1 -c /usr/src/php/ext/gd/libgd/gd_tga.c -o libgd/gd_tga.lo  -MMD -MF libgd/gd_tga.dep -MT libgd/gd_tga.lo
-#11 52.68  cc -I. -I/usr/src/php/ext/gd -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16 -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -I/usr/src/php/ext/gd/libgd -DZEND_COMPILE_DL_EXT=1 -c /usr/src/php/ext/gd/libgd/gd_tga.c -MMD -MF libgd/gd_tga.dep -MT libgd/gd_tga.lo  -fPIC -DPIC -o libgd/.libs/gd_tga.o
-#11 52.87 /bin/bash /usr/src/php/ext/gd/libtool --mode=link cc -shared -I/usr/src/php/ext/gd/include -I/usr/src/php/ext/gd/main -I/usr/src/php/ext/gd -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -I/usr/include/libpng16  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -Wl,-O1 -pie  -o gd.la -export-dynamic -avoid-version -prefer-pic -module -rpath /usr/src/php/ext/gd/modules  gd.lo libgd/gd.lo libgd/gd_gd.lo libgd/gd_gd2.lo libgd/gd_io.lo libgd/gd_io_dp.lo libgd/gd_io_file.lo libgd/gd_ss.lo libgd/gd_io_ss.lo libgd/gd_webp.lo libgd/gd_avif.lo libgd/gd_png.lo libgd/gd_jpeg.lo libgd/gdxpm.lo libgd/gdfontt.lo libgd/gdfonts.lo libgd/gdfontmb.lo libgd/gdfontl.lo libgd/gdfontg.lo libgd/gdtables.lo libgd/gdft.lo libgd/gdcache.lo libgd/gdkanji.lo libgd/wbmp.lo libgd/gd_wbmp.lo libgd/gdhelpers.lo libgd/gd_topal.lo libgd/gd_gif_in.lo libgd/gd_xbm.lo libgd/gd_gif_out.lo libgd/gd_security.lo libgd/gd_filter.lo libgd/gd_pixelate.lo libgd/gd_rotate.lo libgd/gd_color_match.lo libgd/gd_transform.lo libgd/gd_crop.lo libgd/gd_interpolation.lo libgd/gd_matrix.lo libgd/gd_bmp.lo libgd/gd_tga.lo -lz -lpng16
-#11 53.15 cc -shared  .libs/gd.o libgd/.libs/gd.o libgd/.libs/gd_gd.o libgd/.libs/gd_gd2.o libgd/.libs/gd_io.o libgd/.libs/gd_io_dp.o libgd/.libs/gd_io_file.o libgd/.libs/gd_ss.o libgd/.libs/gd_io_ss.o libgd/.libs/gd_webp.o libgd/.libs/gd_avif.o libgd/.libs/gd_png.o libgd/.libs/gd_jpeg.o libgd/.libs/gdxpm.o libgd/.libs/gdfontt.o libgd/.libs/gdfonts.o libgd/.libs/gdfontmb.o libgd/.libs/gdfontl.o libgd/.libs/gdfontg.o libgd/.libs/gdtables.o libgd/.libs/gdft.o libgd/.libs/gdcache.o libgd/.libs/gdkanji.o libgd/.libs/wbmp.o libgd/.libs/gd_wbmp.o libgd/.libs/gdhelpers.o libgd/.libs/gd_topal.o libgd/.libs/gd_gif_in.o libgd/.libs/gd_xbm.o libgd/.libs/gd_gif_out.o libgd/.libs/gd_security.o libgd/.libs/gd_filter.o libgd/.libs/gd_pixelate.o libgd/.libs/gd_rotate.o libgd/.libs/gd_color_match.o libgd/.libs/gd_transform.o libgd/.libs/gd_crop.o libgd/.libs/gd_interpolation.o libgd/.libs/gd_matrix.o libgd/.libs/gd_bmp.o libgd/.libs/gd_tga.o  -lz -lpng16  -Wl,-O1 -Wl,-soname -Wl,gd.so -o .libs/gd.so
-#11 53.17 creating gd.la
-#11 53.18 (cd .libs && rm -f gd.la && ln -s ../gd.la gd.la)
-#11 53.18 /bin/bash /usr/src/php/ext/gd/libtool --mode=install cp ./gd.la /usr/src/php/ext/gd/modules
-#11 53.21 cp ./.libs/gd.so /usr/src/php/ext/gd/modules/gd.so
-#11 53.21 cp ./.libs/gd.lai /usr/src/php/ext/gd/modules/gd.la
-#11 53.23 PATH="$PATH:/sbin" ldconfig -n /usr/src/php/ext/gd/modules
-#11 53.23 ----------------------------------------------------------------------
-#11 53.23 Libraries have been installed in:
-#11 53.23    /usr/src/php/ext/gd/modules
-#11 53.23 
-#11 53.23 If you ever happen to want to link against installed libraries
-#11 53.23 in a given directory, LIBDIR, you must either use libtool, and
-#11 53.23 specify the full pathname of the library, or use the `-LLIBDIR'
-#11 53.23 flag during linking and do at least one of the following:
-#11 53.23    - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
-#11 53.23      during execution
-#11 53.23    - add LIBDIR to the `LD_RUN_PATH' environment variable
-#11 53.23      during linking
-#11 53.23    - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
-#11 53.23    - have your system administrator add LIBDIR to `/etc/ld.so.conf'
-#11 53.23 
-#11 53.23 See any operating system documentation about shared libraries for
-#11 53.23 more information, such as the ld(1) and ld.so(8) manual pages.
-#11 53.24 ----------------------------------------------------------------------
-#11 53.24 
-#11 53.24 Build complete.
-#11 53.24 Don't forget to run 'make test'.
-#11 53.24 
-#11 53.26 + strip --strip-all modules/gd.so
-#11 53.29 Installing shared extensions:     /usr/local/lib/php/extensions/no-debug-non-zts-20210902/
-#11 53.40 Installing header files:          /usr/local/include/php/
-#11 53.80 find . -name \*.gcno -o -name \*.gcda | xargs rm -f
-#11 53.80 find . -name \*.lo -o -name \*.o -o -name \*.dep | xargs rm -f
-#11 53.81 find . -name \*.la -o -name \*.a | xargs rm -f
-#11 53.81 find . -name \*.so | xargs rm -f
-#11 53.82 find . -name .libs -a -type d|xargs rm -rf
-#11 53.82 rm -f libphp.la      modules/* libs/*
-#11 53.83 rm -f ext/opcache/jit/zend_jit_x86.c
-#11 53.83 rm -f ext/opcache/jit/zend_jit_arm64.c
-#11 53.83 rm -f ext/opcache/minilua
-#11 DONE 79.0s
-#12 [stage-0  4/13] RUN a2enmod rewrite
-#12 1.099 Enabling module rewrite.
-#12 1.555 To activate the new configuration, you need to run:
-#12 1.555   service apache2 restart
-#12 DONE 107.0s
-#13 [stage-0  5/13] RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-#13 DONE 0.1s
-#14 [stage-0  6/13] RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-#14 DONE 0.1s
-#15 [stage-0  7/13] COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-#15 DONE 0.0s
-#16 [stage-0  8/13] WORKDIR /var/www/html
-#16 DONE 0.0s
-#17 [stage-0  9/13] COPY . .
-#17 DONE 0.1s
-#18 [stage-0 10/13] RUN composer install --no-dev --optimize-autoloader
-#18 0.131 Composer plugins have been disabled for safety in this non-interactive session.
-#18 0.131 Set COMPOSER_ALLOW_SUPERUSER=1 if you want to allow plugins to run as root/super user.
-#18 0.132 Do not run Composer as root/super user! See https://getcomposer.org/root for details
-#18 0.209 Installing dependencies from lock file
-#18 0.214 Verifying lock file contents can be installed on current platform.
-#18 0.237 Package operations: 86 installs, 0 updates, 0 removals
-#18 0.255   - Downloading voku/portable-ascii (2.0.3)
-#18 0.257   - Downloading symfony/polyfill-php80 (v1.31.0)
-#18 0.257   - Downloading symfony/polyfill-mbstring (v1.31.0)
-#18 0.257   - Downloading symfony/polyfill-ctype (v1.31.0)
-#18 0.258   - Downloading phpoption/phpoption (1.9.3)
-#18 0.258   - Downloading graham-campbell/result-type (v1.1.3)
-#18 0.258   - Downloading vlucas/phpdotenv (v5.6.1)
-#18 0.259   - Downloading symfony/css-selector (v6.0.19)
-#18 0.259   - Downloading tijsverkoyen/css-to-inline-styles (v2.3.0)
-#18 0.259   - Downloading symfony/var-dumper (v6.0.19)
-#18 0.260   - Downloading symfony/polyfill-uuid (v1.31.0)
-#18 0.260   - Downloading symfony/uid (v6.0.19)
-#18 0.260   - Downloading symfony/routing (v6.0.19)
-#18 0.261   - Downloading symfony/process (v6.0.19)
-#18 0.261   - Downloading symfony/polyfill-intl-normalizer (v1.31.0)
-#18 0.261   - Downloading symfony/polyfill-intl-idn (v1.31.0)
-#18 0.261   - Downloading symfony/mime (v6.0.19)
-#18 0.261   - Downloading psr/container (2.0.2)
-#18 0.262   - Downloading symfony/service-contracts (v3.0.2)
-#18 0.262   - Downloading psr/event-dispatcher (1.0.0)
-#18 0.262   - Downloading symfony/event-dispatcher-contracts (v3.0.2)
-#18 0.262   - Downloading symfony/event-dispatcher (v6.0.19)
-#18 0.262   - Downloading psr/log (3.0.2)
-#18 0.263   - Downloading doctrine/deprecations (1.1.4)
-#18 0.263   - Downloading doctrine/lexer (2.1.1)
-#18 0.263   - Downloading egulias/email-validator (3.2.6)
-#18 0.263   - Downloading symfony/mailer (v6.0.19)
-#18 0.263   - Downloading symfony/deprecation-contracts (v3.0.2)
-#18 0.264   - Downloading symfony/http-foundation (v6.0.20)
-#18 0.264   - Downloading symfony/error-handler (v6.0.19)
-#18 0.264   - Downloading symfony/http-kernel (v6.0.20)
-#18 0.264   - Downloading symfony/finder (v6.0.19)
-#18 0.264   - Downloading symfony/polyfill-intl-grapheme (v1.31.0)
-#18 0.265   - Downloading symfony/string (v6.0.19)
-#18 0.265   - Downloading symfony/console (v6.0.19)
-#18 0.265   - Downloading symfony/polyfill-php81 (v1.31.0)
-#18 0.265   - Downloading ramsey/collection (1.3.0)
-#18 0.265   - Downloading brick/math (0.11.0)
-#18 0.266   - Downloading ramsey/uuid (4.7.6)
-#18 0.266   - Downloading psr/simple-cache (3.0.0)
-#18 0.266   - Downloading nunomaduro/termwind (v1.15.1)
-#18 0.266   - Downloading symfony/translation-contracts (v3.0.2)
-#18 0.266   - Downloading symfony/translation (v6.0.19)
-#18 0.267   - Downloading psr/clock (1.0.0)
-#18 0.267   - Downloading carbonphp/carbon-doctrine-types (2.1.0)
-#18 0.267   - Downloading nesbot/carbon (2.73.0)
-#18 0.267   - Downloading monolog/monolog (2.10.0)
-#18 0.268   - Downloading league/mime-type-detection (1.16.0)
-#18 0.268   - Downloading league/flysystem (3.29.1)
-#18 0.268   - Downloading league/flysystem-local (3.29.0)
-#18 0.268   - Downloading nette/utils (v4.0.5)
-#18 0.269   - Downloading nette/schema (v1.2.5)
-#18 0.269   - Downloading dflydev/dot-access-data (v3.0.3)
-#18 0.269   - Downloading league/config (v1.2.0)
-#18 0.269   - Downloading league/commonmark (2.6.1)
-#18 0.269   - Downloading laravel/serializable-closure (v1.3.7)
-#18 0.270   - Downloading guzzlehttp/uri-template (v1.0.4)
-#18 0.270   - Downloading fruitcake/php-cors (v1.3.0)
-#18 0.270   - Downloading webmozart/assert (1.11.0)
-#18 0.270   - Downloading dragonmantank/cron-expression (v3.4.0)
-#18 0.271   - Downloading doctrine/inflector (2.0.10)
-#18 0.271   - Downloading laravel/framework (v9.52.20)
-#18 0.271   - Downloading sabberworm/php-css-parser (v8.7.0)
-#18 0.271   - Downloading phenx/php-svg-lib (0.5.4)
-#18 0.272   - Downloading phenx/php-font-lib (0.5.6)
-#18 0.272   - Downloading masterminds/html5 (2.9.0)
-#18 0.272   - Downloading dompdf/dompdf (v2.0.8)
-#18 0.272   - Downloading barryvdh/laravel-dompdf (v2.2.0)
-#18 0.273   - Downloading guzzlehttp/promises (2.0.4)
-#18 0.273   - Downloading ralouphie/getallheaders (3.0.3)
-#18 0.273   - Downloading psr/http-message (2.0)
-#18 0.273   - Downloading psr/http-factory (1.1.0)
-#18 0.273   - Downloading guzzlehttp/psr7 (2.7.0)
-#18 0.274   - Downloading laravel/sanctum (v3.3.3)
-#18 0.274   - Downloading nikic/php-parser (v5.4.0)
-#18 0.274   - Downloading psy/psysh (v0.12.7)
-#18 0.274   - Downloading laravel/tinker (v2.10.1)
-#18 0.274   - Downloading league/csv (9.8.0)
-#18 0.275   - Downloading phpoffice/phpexcel (1.8.1)
-#18 0.275   - Downloading maatwebsite/excel (v1.1.5)
-#18 0.275   - Downloading paragonie/random_compat (v9.99.100)
-#18 0.275   - Downloading psr/http-client (1.0.3)
-#18 0.276   - Downloading paragonie/sodium_compat (v1.21.1)
-#18 0.276   - Downloading guzzlehttp/guzzle (7.9.2)
-#18 0.276   - Downloading pusher/pusher-php-server (7.2.7)
-#18 0.276   - Downloading spatie/laravel-permission (6.15.0)
-#18 0.316   0/86 [>---------------------------]   0%
-#18 0.947  15/86 [====>-----------------------]  17%
-#18 1.081  20/86 [======>---------------------]  23%
-#18 1.182  27/86 [========>-------------------]  31%
-#18 1.400  42/86 [=============>--------------]  48%
-#18 1.508  51/86 [================>-----------]  59%
-#18 1.609  59/86 [===================>--------]  68%
-#18 1.711  66/86 [=====================>------]  76%
-#18 1.836  74/86 [========================>---]  86%
-#18 1.947  80/86 [==========================>-]  93%
-#18 2.153  86/86 [============================] 100%
-#18 2.154   - Installing voku/portable-ascii (2.0.3): Extracting archive
-#18 2.158   - Installing symfony/polyfill-php80 (v1.31.0): Extracting archive
-#18 2.161   - Installing symfony/polyfill-mbstring (v1.31.0): Extracting archive
-#18 2.163   - Installing symfony/polyfill-ctype (v1.31.0): Extracting archive
-#18 2.165   - Installing phpoption/phpoption (1.9.3): Extracting archive
-#18 2.168   - Installing graham-campbell/result-type (v1.1.3): Extracting archive
-#18 2.170   - Installing vlucas/phpdotenv (v5.6.1): Extracting archive
-#18 2.172   - Installing symfony/css-selector (v6.0.19): Extracting archive
-#18 2.175   - Installing tijsverkoyen/css-to-inline-styles (v2.3.0): Extracting archive
-#18 2.178   - Installing symfony/var-dumper (v6.0.19): Extracting archive
-#18 2.180   - Installing symfony/polyfill-uuid (v1.31.0): Extracting archive
-#18 2.181   - Installing symfony/uid (v6.0.19): Extracting archive
-#18 2.181   - Installing symfony/routing (v6.0.19): Extracting archive
-#18 2.181   - Installing symfony/process (v6.0.19): Extracting archive
-#18 2.182   - Installing symfony/polyfill-intl-normalizer (v1.31.0): Extracting archive
-#18 2.182   - Installing symfony/polyfill-intl-idn (v1.31.0): Extracting archive
-#18 2.182   - Installing symfony/mime (v6.0.19): Extracting archive
-#18 2.183   - Installing psr/container (2.0.2): Extracting archive
-#18 2.183   - Installing symfony/service-contracts (v3.0.2): Extracting archive
-#18 2.183   - Installing psr/event-dispatcher (1.0.0): Extracting archive
-#18 2.184   - Installing symfony/event-dispatcher-contracts (v3.0.2): Extracting archive
-#18 2.184   - Installing symfony/event-dispatcher (v6.0.19): Extracting archive
-#18 2.184   - Installing psr/log (3.0.2): Extracting archive
-#18 2.184   - Installing doctrine/deprecations (1.1.4): Extracting archive
-#18 2.185   - Installing doctrine/lexer (2.1.1): Extracting archive
-#18 2.185   - Installing egulias/email-validator (3.2.6): Extracting archive
-#18 2.185   - Installing symfony/mailer (v6.0.19): Extracting archive
-#18 2.186   - Installing symfony/deprecation-contracts (v3.0.2): Extracting archive
-#18 2.186   - Installing symfony/http-foundation (v6.0.20): Extracting archive
-#18 2.186   - Installing symfony/error-handler (v6.0.19): Extracting archive
-#18 2.187   - Installing symfony/http-kernel (v6.0.20): Extracting archive
-#18 2.187   - Installing symfony/finder (v6.0.19): Extracting archive
-#18 2.187   - Installing symfony/polyfill-intl-grapheme (v1.31.0): Extracting archive
-#18 2.187   - Installing symfony/string (v6.0.19): Extracting archive
-#18 2.188   - Installing symfony/console (v6.0.19): Extracting archive
-#18 2.188   - Installing symfony/polyfill-php81 (v1.31.0): Extracting archive
-#18 2.188   - Installing ramsey/collection (1.3.0): Extracting archive
-#18 2.189   - Installing brick/math (0.11.0): Extracting archive
-#18 2.189   - Installing ramsey/uuid (4.7.6): Extracting archive
-#18 2.189   - Installing psr/simple-cache (3.0.0): Extracting archive
-#18 2.190   - Installing nunomaduro/termwind (v1.15.1): Extracting archive
-#18 2.190   - Installing symfony/translation-contracts (v3.0.2): Extracting archive
-#18 2.190   - Installing symfony/translation (v6.0.19): Extracting archive
-#18 2.190   - Installing psr/clock (1.0.0): Extracting archive
-#18 2.191   - Installing carbonphp/carbon-doctrine-types (2.1.0): Extracting archive
-#18 2.191   - Installing nesbot/carbon (2.73.0): Extracting archive
-#18 2.191   - Installing monolog/monolog (2.10.0): Extracting archive
-#18 2.192   - Installing league/mime-type-detection (1.16.0): Extracting archive
-#18 2.192   - Installing league/flysystem (3.29.1): Extracting archive
-#18 2.192   - Installing league/flysystem-local (3.29.0): Extracting archive
-#18 2.192   - Installing nette/utils (v4.0.5): Extracting archive
-#18 2.193   - Installing nette/schema (v1.2.5): Extracting archive
-#18 2.193   - Installing dflydev/dot-access-data (v3.0.3): Extracting archive
-#18 2.193   - Installing league/config (v1.2.0): Extracting archive
-#18 2.194   - Installing league/commonmark (2.6.1): Extracting archive
-#18 2.194   - Installing laravel/serializable-closure (v1.3.7): Extracting archive
-#18 2.194   - Installing guzzlehttp/uri-template (v1.0.4): Extracting archive
-#18 2.194   - Installing fruitcake/php-cors (v1.3.0): Extracting archive
-#18 2.195   - Installing webmozart/assert (1.11.0): Extracting archive
-#18 2.195   - Installing dragonmantank/cron-expression (v3.4.0): Extracting archive
-#18 2.195   - Installing doctrine/inflector (2.0.10): Extracting archive
-#18 2.196   - Installing laravel/framework (v9.52.20): Extracting archive
-#18 2.196   - Installing sabberworm/php-css-parser (v8.7.0): Extracting archive
-#18 2.196   - Installing phenx/php-svg-lib (0.5.4): Extracting archive
-#18 2.196   - Installing phenx/php-font-lib (0.5.6): Extracting archive
-#18 2.197   - Installing masterminds/html5 (2.9.0): Extracting archive
-#18 2.197   - Installing dompdf/dompdf (v2.0.8): Extracting archive
-#18 2.197   - Installing barryvdh/laravel-dompdf (v2.2.0): Extracting archive
-#18 2.198   - Installing guzzlehttp/promises (2.0.4): Extracting archive
-#18 2.198   - Installing ralouphie/getallheaders (3.0.3): Extracting archive
-#18 2.198   - Installing psr/http-message (2.0): Extracting archive
-#18 2.198   - Installing psr/http-factory (1.1.0): Extracting archive
-#18 2.199   - Installing guzzlehttp/psr7 (2.7.0): Extracting archive
-#18 2.199   - Installing laravel/sanctum (v3.3.3): Extracting archive
-#18 2.199   - Installing nikic/php-parser (v5.4.0): Extracting archive
-#18 2.200   - Installing psy/psysh (v0.12.7): Extracting archive
-#18 2.200   - Installing laravel/tinker (v2.10.1): Extracting archive
-#18 2.200   - Installing league/csv (9.8.0): Extracting archive
-#18 2.201   - Installing phpoffice/phpexcel (1.8.1): Extracting archive
-#18 2.201   - Installing maatwebsite/excel (v1.1.5): Extracting archive
-#18 2.201   - Installing paragonie/random_compat (v9.99.100): Extracting archive
-#18 2.201   - Installing psr/http-client (1.0.3): Extracting archive
-#18 2.202   - Installing paragonie/sodium_compat (v1.21.1): Extracting archive
-#18 2.202   - Installing guzzlehttp/guzzle (7.9.2): Extracting archive
-#18 2.202   - Installing pusher/pusher-php-server (7.2.7): Extracting archive
-#18 2.203   - Installing spatie/laravel-permission (6.15.0): Extracting archive
-#18 2.227   0/86 [>---------------------------]   0%
-#18 2.401  20/86 [======>---------------------]  23%
-#18 2.521  37/86 [============>---------------]  43%
-#18 2.636  46/86 [==============>-------------]  53%
-#18 2.780  54/86 [=================>----------]  62%
-#18 2.990  67/86 [=====================>------]  77%
-#18 3.139  71/86 [=======================>----]  82%
-#18 3.310  80/86 [==========================>-]  93%
-#18 3.361  86/86 [============================] 100%
-#18 3.864 Package phpoffice/phpexcel is abandoned, you should avoid using it. Use phpoffice/phpspreadsheet instead.
-#18 3.864 Generating optimized autoload files
-#18 4.893 > Illuminate\Foundation\ComposerScripts::postAutoloadDump
-#18 4.906 > @php artisan package:discover --ansi
-#18 5.072 
-#18 5.072    INFO  Discovering packages.  
-#18 5.072 
-#18 5.074   barryvdh/laravel-dompdf ............................................... DONE
-#18 5.075   laravel/sanctum ....................................................... DONE
-#18 5.075   laravel/tinker ........................................................ DONE
-#18 5.075   nesbot/carbon ......................................................... DONE
-#18 5.076   nunomaduro/termwind ................................................... DONE
-#18 5.076   spatie/laravel-permission ............................................. DONE
-#18 5.077 
-#18 5.087 53 packages you are using are looking for funding.
-#18 5.087 Use the `composer fund` command to find out more!
-#18 DONE 6.7s
-#19 [stage-0 11/13] RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-#19 DONE 0.2s
-#20 [stage-0 12/13] COPY docker-entrypoint.sh /usr/local/bin/
-#20 DONE 0.0s
-#21 [stage-0 13/13] RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-#21 DONE 0.1s
-#22 exporting to docker image format
-#22 exporting layers
-#22 exporting layers 7.6s done
-#22 exporting manifest sha256:922f0996b16f52fd91c3d629aea1560e3fc56918fc65c6f5465d24d6ae19111e
-#22 exporting manifest sha256:922f0996b16f52fd91c3d629aea1560e3fc56918fc65c6f5465d24d6ae19111e 0.2s done
-#22 exporting config sha256:fac322b13424e3113d701d949eb7122b8bf73329e8fec628e6e816c88b734603
-#22 exporting config sha256:fac322b13424e3113d701d949eb7122b8bf73329e8fec628e6e816c88b734603 0.3s done
-#22 DONE 11.0s
-#23 exporting cache to client directory
-#23 preparing build cache for export
-#23 writing cache manifest sha256:ba021b491bc95932d5e1e6daa375584994b73a9da4903e15bbe39fd3e35c0485
-#23 writing cache manifest sha256:ba021b491bc95932d5e1e6daa375584994b73a9da4903e15bbe39fd3e35c0485 0.4s done
-#23 DONE 29.6s
+==> Cloning from https://github.com/ragnarsson03/Proyecto-CiudadLimpia
+==> Checking out commit eba3c4044a2e9929e7d9b9a4137a4090b8a1606c in branch main
+==> Downloading cache...
+==> Transferred 249MB in 8s. Extraction took 0s.
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.36kB done
+#1 DONE 0.0s
+#2 [internal] load metadata for docker.io/library/php:8.1-apache
+#2 ...
+#3 [auth] library/composer:pull render-prod/docker-mirror-repository/library/composer:pull token for us-west1-docker.pkg.dev
+#3 DONE 0.0s
+#4 [auth] library/php:pull render-prod/docker-mirror-repository/library/php:pull token for us-west1-docker.pkg.dev
+#4 DONE 0.0s
+#5 [internal] load metadata for docker.io/library/composer:latest
+#5 DONE 0.6s
+#2 [internal] load metadata for docker.io/library/php:8.1-apache
+#2 DONE 0.6s
+#6 [internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+#7 importing cache manifest from local:13642267193520419649
+#7 inferred cache manifest type: application/vnd.oci.image.index.v1+json done
+#7 DONE 0.0s
+#8 [stage-0  1/13] FROM docker.io/library/php:8.1-apache@sha256:37d133923b7ca3c8d66290f34adb72318ca9eb4e8a0dc1052718b6ee72c7e3dc
+#8 resolve docker.io/library/php:8.1-apache@sha256:37d133923b7ca3c8d66290f34adb72318ca9eb4e8a0dc1052718b6ee72c7e3dc 0.0s done
+#8 DONE 0.0s
+#9 FROM docker.io/library/composer:latest@sha256:59ee7d4d85c5ea88e3eb91ef2f93498e7bab51526327a479b4cb9f4d9b4bd567
+#9 resolve docker.io/library/composer:latest@sha256:59ee7d4d85c5ea88e3eb91ef2f93498e7bab51526327a479b4cb9f4d9b4bd567 0.0s done
+#9 DONE 0.0s
+#10 [internal] load build context
+#10 transferring context: 1.17MB 0.0s done
+#10 DONE 0.0s
+#11 [stage-0  5/13] RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+#11 CACHED
+#12 [stage-0  6/13] RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+#12 CACHED
+#13 [stage-0  7/13] COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+#13 CACHED
+#14 [stage-0  2/13] RUN apt-get update && apt-get install -y     git     curl     libpng-dev     libonig-dev     libxml2-dev     zip     unzip     postgresql-client     libpq-dev     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql     && docker-php-ext-install pdo pdo_pgsql pgsql
+#14 CACHED
+#15 [stage-0  3/13] RUN docker-php-ext-install mbstring exif pcntl bcmath gd
+#15 CACHED
+#16 [stage-0  4/13] RUN a2enmod rewrite
+#16 CACHED
+#17 [stage-0  8/13] WORKDIR /var/www/html
+#17 sha256:c29f5b76f736a8b555fd191c48d6581bb918bcd605a7cbcc76205dd6acff3260 28.21MB / 28.21MB 0.3s
+#17 sha256:c29f5b76f736a8b555fd191c48d6581bb918bcd605a7cbcc76205dd6acff3260 28.21MB / 28.21MB 0.3s done
+#17 extracting sha256:c29f5b76f736a8b555fd191c48d6581bb918bcd605a7cbcc76205dd6acff3260
+#17 extracting sha256:c29f5b76f736a8b555fd191c48d6581bb918bcd605a7cbcc76205dd6acff3260 0.8s done
+#17 sha256:938b43bd362550a22f7598048be3cdb80b38df451eff35616e22dbc6fee5ecee 226B / 226B done
+#17 extracting sha256:938b43bd362550a22f7598048be3cdb80b38df451eff35616e22dbc6fee5ecee
+#17 extracting sha256:938b43bd362550a22f7598048be3cdb80b38df451eff35616e22dbc6fee5ecee 0.2s done
+#17 sha256:c3648e386d9c0a0a75a5a739445fd7ba6065ef2d0ca169fdb4edda18251d5f47 20.97MB / 104.35MB 0.2s
+#17 sha256:c3648e386d9c0a0a75a5a739445fd7ba6065ef2d0ca169fdb4edda18251d5f47 39.85MB / 104.35MB 0.3s
+#17 sha256:c3648e386d9c0a0a75a5a739445fd7ba6065ef2d0ca169fdb4edda18251d5f47 59.77MB / 104.35MB 0.5s
+#17 sha256:c3648e386d9c0a0a75a5a739445fd7ba6065ef2d0ca169fdb4edda18251d5f47 79.69MB / 104.35MB 0.6s
+#17 sha256:c3648e386d9c0a0a75a5a739445fd7ba6065ef2d0ca169fdb4edda18251d5f47 104.35MB / 104.35MB 0.9s done
+#17 extracting sha256:c3648e386d9c0a0a75a5a739445fd7ba6065ef2d0ca169fdb4edda18251d5f47
+#17 extracting sha256:c3648e386d9c0a0a75a5a739445fd7ba6065ef2d0ca169fdb4edda18251d5f47 4.5s done
+#17 sha256:5ba613b2617227f62590bbacbf73cc34ebe9cb38409919563f10fbf097f66e6f 222B / 222B done
+#17 extracting sha256:5ba613b2617227f62590bbacbf73cc34ebe9cb38409919563f10fbf097f66e6f
+#17 extracting sha256:5ba613b2617227f62590bbacbf73cc34ebe9cb38409919563f10fbf097f66e6f 0.2s done
+#17 sha256:b38b90df0010f1d29c8921805f724c91e56b617644d75b3ca4e27c30ab7edd79 20.12MB / 20.12MB 0.2s done
+#17 extracting sha256:b38b90df0010f1d29c8921805f724c91e56b617644d75b3ca4e27c30ab7edd79
+#17 extracting sha256:b38b90df0010f1d29c8921805f724c91e56b617644d75b3ca4e27c30ab7edd79 0.5s done
+#17 sha256:de8b28205c8a21074cba9ac13fef9bf0f8c527acc0ee0d5cd96c9b4247b6ca13 427B / 427B done
+#17 extracting sha256:de8b28205c8a21074cba9ac13fef9bf0f8c527acc0ee0d5cd96c9b4247b6ca13 0.0s done
+#17 sha256:0842123eb10865b701b03063ddd6b34dcad08a00812359e107c4447820c4f418 486B / 486B done
+#17 extracting sha256:0842123eb10865b701b03063ddd6b34dcad08a00812359e107c4447820c4f418 0.0s done
+#17 sha256:5a8097b123352e2dd857b7a386c60ae8ebea48daf485b21b27411938b91155d3 12.05MB / 12.05MB 0.1s done
+#17 extracting sha256:5a8097b123352e2dd857b7a386c60ae8ebea48daf485b21b27411938b91155d3 0.1s done
+#17 sha256:50940727b2ee4d9cc9a0d3ae1fa16bfea093dfe54230356a1897e4a562ebc39e 485B / 485B done
+#17 extracting sha256:50940727b2ee4d9cc9a0d3ae1fa16bfea093dfe54230356a1897e4a562ebc39e 0.0s done
+#17 sha256:b6c8ec9d37c98ba2f85fb8bf7cb2cecfcc7f90a127dbd42283a566701889d7d9 11.16MB / 11.16MB 0.1s done
+#17 extracting sha256:b6c8ec9d37c98ba2f85fb8bf7cb2cecfcc7f90a127dbd42283a566701889d7d9
+#17 extracting sha256:b6c8ec9d37c98ba2f85fb8bf7cb2cecfcc7f90a127dbd42283a566701889d7d9 0.6s done
+#17 sha256:6d6701d3420e5e5bfd8577ae15729d3c9cd3b6004947337098618c6c92b86e16 2.45kB / 2.45kB done
+#17 extracting sha256:6d6701d3420e5e5bfd8577ae15729d3c9cd3b6004947337098618c6c92b86e16 0.0s done
+#17 sha256:549038872f9818b057df48deb181ea7d0ec01ff345fb4092009d1b6c34f7d707 246B / 246B done
+#17 extracting sha256:549038872f9818b057df48deb181ea7d0ec01ff345fb4092009d1b6c34f7d707 0.0s done
+#17 sha256:106e1f36260d5824747abc49ed3abbc102324f73c035ccbedf337bb8b81ea0af 887B / 887B done
+#17 extracting sha256:106e1f36260d5824747abc49ed3abbc102324f73c035ccbedf337bb8b81ea0af 0.0s done
+#17 sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 32B / 32B done
+#17 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0.0s done
+#17 sha256:08c025176e9383689b52e4c341fb88e4183f939f8c1a9c209f01800045cc59d0 23.07MB / 60.56MB 0.2s
+#17 sha256:08c025176e9383689b52e4c341fb88e4183f939f8c1a9c209f01800045cc59d0 44.04MB / 60.56MB 0.3s
+#17 sha256:08c025176e9383689b52e4c341fb88e4183f939f8c1a9c209f01800045cc59d0 60.56MB / 60.56MB 0.5s done
+#17 extracting sha256:08c025176e9383689b52e4c341fb88e4183f939f8c1a9c209f01800045cc59d0
+#17 extracting sha256:08c025176e9383689b52e4c341fb88e4183f939f8c1a9c209f01800045cc59d0 1.4s done
+#17 sha256:4b46d1c20dee676cf325db40503f777518d2945e983a4a51c07e9dfc0a5e15d3 861.56kB / 861.56kB 0.0s done
+#17 extracting sha256:4b46d1c20dee676cf325db40503f777518d2945e983a4a51c07e9dfc0a5e15d3 0.0s done
+#17 sha256:1249f8430a8a0e75c62896fab44ac06b9aab8c3ebf5ae7e7feacd71667fed2ca 309B / 309B 0.0s done
+#17 extracting sha256:1249f8430a8a0e75c62896fab44ac06b9aab8c3ebf5ae7e7feacd71667fed2ca 0.0s done
+#17 sha256:8505838958ac2d58b173e70826c2ee5c157ee6de4ae10e3952776697e77db27b 2.92kB / 2.92kB done
+#17 extracting sha256:8505838958ac2d58b173e70826c2ee5c157ee6de4ae10e3952776697e77db27b 0.0s done
+#17 sha256:af84fa0f9169ab346baf305d8812f595f37aaed0c960c00664961a1a7dfaf51a 5.65kB / 5.65kB done
+#17 extracting sha256:af84fa0f9169ab346baf305d8812f595f37aaed0c960c00664961a1a7dfaf51a
+#17 extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d75e68dc38e8acc1 0.0s done
+#17 extracting sha256:af84fa0f9169ab346baf305d8812f595f37aaed0c960c00664961a1a7dfaf51a 0.0s done
+#17 sha256:f343432372f8deba6a087c377733466ef838ecd6e892dd659bf895d1b9a61619 740.34kB / 740.34kB done
+#17 extracting sha256:f343432372f8deba6a087c377733466ef838ecd6e892dd659bf895d1b9a61619 0.0s done
+#17 CACHED
+#18 [stage-0  9/13] COPY . .
+#18 DONE 0.1s
+#19 [stage-0 10/13] RUN composer install --no-dev --optimize-autoloader
+#19 0.109 Composer plugins have been disabled for safety in this non-interactive session.
+#19 0.109 Set COMPOSER_ALLOW_SUPERUSER=1 if you want to allow plugins to run as root/super user.
+#19 0.109 Do not run Composer as root/super user! See https://getcomposer.org/root for details
+#19 0.170 Installing dependencies from lock file
+#19 0.174 Verifying lock file contents can be installed on current platform.
+#19 0.191 Package operations: 86 installs, 0 updates, 0 removals
+#19 0.197   - Downloading voku/portable-ascii (2.0.3)
+#19 0.198   - Downloading symfony/polyfill-php80 (v1.31.0)
+#19 0.198   - Downloading symfony/polyfill-mbstring (v1.31.0)
+#19 0.199   - Downloading symfony/polyfill-ctype (v1.31.0)
+#19 0.199   - Downloading phpoption/phpoption (1.9.3)
+#19 0.200   - Downloading graham-campbell/result-type (v1.1.3)
+#19 0.200   - Downloading vlucas/phpdotenv (v5.6.1)
+#19 0.200   - Downloading symfony/css-selector (v6.0.19)
+#19 0.201   - Downloading tijsverkoyen/css-to-inline-styles (v2.3.0)
+#19 0.201   - Downloading symfony/var-dumper (v6.0.19)
+#19 0.201   - Downloading symfony/polyfill-uuid (v1.31.0)
+#19 0.202   - Downloading symfony/uid (v6.0.19)
+#19 0.202   - Downloading symfony/routing (v6.0.19)
+#19 0.202   - Downloading symfony/process (v6.0.19)
+#19 0.202   - Downloading symfony/polyfill-intl-normalizer (v1.31.0)
+#19 0.202   - Downloading symfony/polyfill-intl-idn (v1.31.0)
+#19 0.203   - Downloading symfony/mime (v6.0.19)
+#19 0.203   - Downloading psr/container (2.0.2)
+#19 0.203   - Downloading symfony/service-contracts (v3.0.2)
+#19 0.203   - Downloading psr/event-dispatcher (1.0.0)
+#19 0.203   - Downloading symfony/event-dispatcher-contracts (v3.0.2)
+#19 0.204   - Downloading symfony/event-dispatcher (v6.0.19)
+#19 0.204   - Downloading psr/log (3.0.2)
+#19 0.204   - Downloading doctrine/deprecations (1.1.4)
+#19 0.204   - Downloading doctrine/lexer (2.1.1)
+#19 0.205   - Downloading egulias/email-validator (3.2.6)
+#19 0.205   - Downloading symfony/mailer (v6.0.19)
+#19 0.205   - Downloading symfony/deprecation-contracts (v3.0.2)
+#19 0.205   - Downloading symfony/http-foundation (v6.0.20)
+#19 0.205   - Downloading symfony/error-handler (v6.0.19)
+#19 0.206   - Downloading symfony/http-kernel (v6.0.20)
+#19 0.206   - Downloading symfony/finder (v6.0.19)
+#19 0.206   - Downloading symfony/polyfill-intl-grapheme (v1.31.0)
+#19 0.206   - Downloading symfony/string (v6.0.19)
+#19 0.207   - Downloading symfony/console (v6.0.19)
+#19 0.207   - Downloading symfony/polyfill-php81 (v1.31.0)
+#19 0.207   - Downloading ramsey/collection (1.3.0)
+#19 0.207   - Downloading brick/math (0.11.0)
+#19 0.207   - Downloading ramsey/uuid (4.7.6)
+#19 0.208   - Downloading psr/simple-cache (3.0.0)
+#19 0.208   - Downloading nunomaduro/termwind (v1.15.1)
+#19 0.208   - Downloading symfony/translation-contracts (v3.0.2)
+#19 0.208   - Downloading symfony/translation (v6.0.19)
+#19 0.208   - Downloading psr/clock (1.0.0)
+#19 0.209   - Downloading carbonphp/carbon-doctrine-types (2.1.0)
+#19 0.209   - Downloading nesbot/carbon (2.73.0)
+#19 0.209   - Downloading monolog/monolog (2.10.0)
+#19 0.209   - Downloading league/mime-type-detection (1.16.0)
+#19 0.210   - Downloading league/flysystem (3.29.1)
+#19 0.210   - Downloading league/flysystem-local (3.29.0)
+#19 0.210   - Downloading nette/utils (v4.0.5)
+#19 0.210   - Downloading nette/schema (v1.2.5)
+#19 0.211   - Downloading dflydev/dot-access-data (v3.0.3)
+#19 0.211   - Downloading league/config (v1.2.0)
+#19 0.211   - Downloading league/commonmark (2.6.1)
+#19 0.211   - Downloading laravel/serializable-closure (v1.3.7)
+#19 0.211   - Downloading guzzlehttp/uri-template (v1.0.4)
+#19 0.212   - Downloading fruitcake/php-cors (v1.3.0)
+#19 0.212   - Downloading webmozart/assert (1.11.0)
+#19 0.212   - Downloading dragonmantank/cron-expression (v3.4.0)
+#19 0.212   - Downloading doctrine/inflector (2.0.10)
+#19 0.213   - Downloading laravel/framework (v9.52.20)
+#19 0.213   - Downloading sabberworm/php-css-parser (v8.7.0)
+#19 0.213   - Downloading phenx/php-svg-lib (0.5.4)
+#19 0.213   - Downloading phenx/php-font-lib (0.5.6)
+#19 0.213   - Downloading masterminds/html5 (2.9.0)
+#19 0.214   - Downloading dompdf/dompdf (v2.0.8)
+#19 0.214   - Downloading barryvdh/laravel-dompdf (v2.2.0)
+#19 0.214   - Downloading guzzlehttp/promises (2.0.4)
+#19 0.214   - Downloading ralouphie/getallheaders (3.0.3)
+#19 0.215   - Downloading psr/http-message (2.0)
+#19 0.215   - Downloading psr/http-factory (1.1.0)
+#19 0.215   - Downloading guzzlehttp/psr7 (2.7.0)
+#19 0.215   - Downloading laravel/sanctum (v3.3.3)
+#19 0.215   - Downloading nikic/php-parser (v5.4.0)
+#19 0.216   - Downloading psy/psysh (v0.12.7)
+#19 0.216   - Downloading laravel/tinker (v2.10.1)
+#19 0.216   - Downloading league/csv (9.8.0)
+#19 0.216   - Downloading phpoffice/phpexcel (1.8.1)
+#19 0.217   - Downloading maatwebsite/excel (v1.1.5)
+#19 0.217   - Downloading paragonie/random_compat (v9.99.100)
+#19 0.217   - Downloading psr/http-client (1.0.3)
+#19 0.217   - Downloading paragonie/sodium_compat (v1.21.1)
+#19 0.217   - Downloading guzzlehttp/guzzle (7.9.2)
+#19 0.218   - Downloading pusher/pusher-php-server (7.2.7)
+#19 0.218   - Downloading spatie/laravel-permission (6.15.0)
+#19 0.254   0/86 [>---------------------------]   0%
+#19 0.897  14/86 [====>-----------------------]  16%
+#19 1.001  21/86 [======>---------------------]  24%
+#19 1.122  26/86 [========>-------------------]  30%
+#19 1.322  42/86 [=============>--------------]  48%
+#19 1.430  48/86 [===============>------------]  55%
+#19 1.540  55/86 [=================>----------]  63%
+#19 1.644  61/86 [===================>--------]  70%
+#19 1.745  69/86 [======================>-----]  80%
+#19 1.969  81/86 [==========================>-]  94%
+#19 2.123  86/86 [============================] 100%
+#19 2.123   - Installing voku/portable-ascii (2.0.3): Extracting archive
+#19 2.127   - Installing symfony/polyfill-php80 (v1.31.0): Extracting archive
+#19 2.130   - Installing symfony/polyfill-mbstring (v1.31.0): Extracting archive
+#19 2.132   - Installing symfony/polyfill-ctype (v1.31.0): Extracting archive
+#19 2.135   - Installing phpoption/phpoption (1.9.3): Extracting archive
+#19 2.137   - Installing graham-campbell/result-type (v1.1.3): Extracting archive
+#19 2.140   - Installing vlucas/phpdotenv (v5.6.1): Extracting archive
+#19 2.143   - Installing symfony/css-selector (v6.0.19): Extracting archive
+#19 2.145   - Installing tijsverkoyen/css-to-inline-styles (v2.3.0): Extracting archive
+#19 2.148   - Installing symfony/var-dumper (v6.0.19): Extracting archive
+#19 2.150   - Installing symfony/polyfill-uuid (v1.31.0): Extracting archive
+#19 2.151   - Installing symfony/uid (v6.0.19): Extracting archive
+#19 2.151   - Installing symfony/routing (v6.0.19): Extracting archive
+#19 2.152   - Installing symfony/process (v6.0.19): Extracting archive
+#19 2.152   - Installing symfony/polyfill-intl-normalizer (v1.31.0): Extracting archive
+#19 2.152   - Installing symfony/polyfill-intl-idn (v1.31.0): Extracting archive
+#19 2.153   - Installing symfony/mime (v6.0.19): Extracting archive
+#19 2.153   - Installing psr/container (2.0.2): Extracting archive
+#19 2.154   - Installing symfony/service-contracts (v3.0.2): Extracting archive
+#19 2.154   - Installing psr/event-dispatcher (1.0.0): Extracting archive
+#19 2.154   - Installing symfony/event-dispatcher-contracts (v3.0.2): Extracting archive
+#19 2.155   - Installing symfony/event-dispatcher (v6.0.19): Extracting archive
+#19 2.155   - Installing psr/log (3.0.2): Extracting archive
+#19 2.155   - Installing doctrine/deprecations (1.1.4): Extracting archive
+#19 2.156   - Installing doctrine/lexer (2.1.1): Extracting archive
+#19 2.156   - Installing egulias/email-validator (3.2.6): Extracting archive
+#19 2.156   - Installing symfony/mailer (v6.0.19): Extracting archive
+#19 2.157   - Installing symfony/deprecation-contracts (v3.0.2): Extracting archive
+#19 2.157   - Installing symfony/http-foundation (v6.0.20): Extracting archive
+#19 2.157   - Installing symfony/error-handler (v6.0.19): Extracting archive
+#19 2.158   - Installing symfony/http-kernel (v6.0.20): Extracting archive
+#19 2.158   - Installing symfony/finder (v6.0.19): Extracting archive
+#19 2.158   - Installing symfony/polyfill-intl-grapheme (v1.31.0): Extracting archive
+#19 2.159   - Installing symfony/string (v6.0.19): Extracting archive
+#19 2.159   - Installing symfony/console (v6.0.19): Extracting archive
+#19 2.159   - Installing symfony/polyfill-php81 (v1.31.0): Extracting archive
+#19 2.160   - Installing ramsey/collection (1.3.0): Extracting archive
+#19 2.160   - Installing brick/math (0.11.0): Extracting archive
+#19 2.160   - Installing ramsey/uuid (4.7.6): Extracting archive
+#19 2.161   - Installing psr/simple-cache (3.0.0): Extracting archive
+#19 2.161   - Installing nunomaduro/termwind (v1.15.1): Extracting archive
+#19 2.161   - Installing symfony/translation-contracts (v3.0.2): Extracting archive
+#19 2.162   - Installing symfony/translation (v6.0.19): Extracting archive
+#19 2.162   - Installing psr/clock (1.0.0): Extracting archive
+#19 2.162   - Installing carbonphp/carbon-doctrine-types (2.1.0): Extracting archive
+#19 2.163   - Installing nesbot/carbon (2.73.0): Extracting archive
+#19 2.163   - Installing monolog/monolog (2.10.0): Extracting archive
+#19 2.163   - Installing league/mime-type-detection (1.16.0): Extracting archive
+#19 2.164   - Installing league/flysystem (3.29.1): Extracting archive
+#19 2.164   - Installing league/flysystem-local (3.29.0): Extracting archive
+#19 2.165   - Installing nette/utils (v4.0.5): Extracting archive
+#19 2.165   - Installing nette/schema (v1.2.5): Extracting archive
+#19 2.165   - Installing dflydev/dot-access-data (v3.0.3): Extracting archive
+#19 2.166   - Installing league/config (v1.2.0): Extracting archive
+#19 2.166   - Installing league/commonmark (2.6.1): Extracting archive
+#19 2.166   - Installing laravel/serializable-closure (v1.3.7): Extracting archive
+#19 2.167   - Installing guzzlehttp/uri-template (v1.0.4): Extracting archive
+#19 2.167   - Installing fruitcake/php-cors (v1.3.0): Extracting archive
+#19 2.167   - Installing webmozart/assert (1.11.0): Extracting archive
+#19 2.168   - Installing dragonmantank/cron-expression (v3.4.0): Extracting archive
+#19 2.168   - Installing doctrine/inflector (2.0.10): Extracting archive
+#19 2.168   - Installing laravel/framework (v9.52.20): Extracting archive
+#19 2.169   - Installing sabberworm/php-css-parser (v8.7.0): Extracting archive
+#19 2.169   - Installing phenx/php-svg-lib (0.5.4): Extracting archive
+#19 2.169   - Installing phenx/php-font-lib (0.5.6): Extracting archive
+#19 2.170   - Installing masterminds/html5 (2.9.0): Extracting archive
+#19 2.170   - Installing dompdf/dompdf (v2.0.8): Extracting archive
+#19 2.170   - Installing barryvdh/laravel-dompdf (v2.2.0): Extracting archive
+#19 2.170   - Installing guzzlehttp/promises (2.0.4): Extracting archive
+#19 2.171   - Installing ralouphie/getallheaders (3.0.3): Extracting archive
+#19 2.171   - Installing psr/http-message (2.0): Extracting archive
+#19 2.171   - Installing psr/http-factory (1.1.0): Extracting archive
+#19 2.172   - Installing guzzlehttp/psr7 (2.7.0): Extracting archive
+#19 2.172   - Installing laravel/sanctum (v3.3.3): Extracting archive
+#19 2.172   - Installing nikic/php-parser (v5.4.0): Extracting archive
+#19 2.173   - Installing psy/psysh (v0.12.7): Extracting archive
+#19 2.173   - Installing laravel/tinker (v2.10.1): Extracting archive
+#19 2.173   - Installing league/csv (9.8.0): Extracting archive
+#19 2.173   - Installing phpoffice/phpexcel (1.8.1): Extracting archive
+#19 2.174   - Installing maatwebsite/excel (v1.1.5): Extracting archive
+#19 2.174   - Installing paragonie/random_compat (v9.99.100): Extracting archive
+#19 2.174   - Installing psr/http-client (1.0.3): Extracting archive
+#19 2.175   - Installing paragonie/sodium_compat (v1.21.1): Extracting archive
+#19 2.175   - Installing guzzlehttp/guzzle (7.9.2): Extracting archive
+#19 2.175   - Installing pusher/pusher-php-server (7.2.7): Extracting archive
+#19 2.175   - Installing spatie/laravel-permission (6.15.0): Extracting archive
+#19 2.199   0/86 [>---------------------------]   0%
+#19 2.343  30/86 [=========>------------------]  34%
+#19 2.490  40/86 [=============>--------------]  46%
+#19 2.596  49/86 [===============>------------]  56%
+#19 2.712  57/86 [==================>---------]  66%
+#19 2.814  65/86 [=====================>------]  75%
+#19 2.984  72/86 [=======================>----]  83%
+#19 3.086  78/86 [=========================>--]  90%
+#19 3.158  86/86 [============================] 100%
+#19 3.531 Package phpoffice/phpexcel is abandoned, you should avoid using it. Use phpoffice/phpspreadsheet instead.
+#19 3.531 Generating optimized autoload files
+#19 4.593 > Illuminate\Foundation\ComposerScripts::postAutoloadDump
+#19 4.606 > @php artisan package:discover --ansi
+#19 4.730 
+#19 4.730    INFO  Discovering packages.  
+#19 4.730 
+#19 4.732   barryvdh/laravel-dompdf ............................................... DONE
+#19 4.733   laravel/sanctum ....................................................... DONE
+#19 4.733   laravel/tinker ........................................................ DONE
+#19 4.734   nesbot/carbon ......................................................... DONE
+#19 4.734   nunomaduro/termwind ................................................... DONE
+#19 4.734   spatie/laravel-permission ............................................. DONE
+#19 4.735 
+#19 4.743 53 packages you are using are looking for funding.
+#19 4.743 Use the `composer fund` command to find out more!
+#19 DONE 4.9s
+#20 [stage-0 11/13] RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+#20 DONE 0.2s
+#21 [stage-0 12/13] COPY docker-entrypoint.sh /usr/local/bin/
+#21 DONE 0.0s
+#22 [stage-0 13/13] RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+#22 DONE 0.1s
+#23 exporting to docker image format
+#23 exporting layers
+#23 exporting layers 2.1s done
+#23 exporting manifest sha256:752586e994cb1092f4d4ba62b365c7d5651db530643be39e981e7c038767107d done
+#23 exporting config sha256:6a0dbe40dc109aa9fa3bee86183d1ace964564d4d1bd97f952e0a0cc5090cf44 done
+#23 DONE 5.2s
+#24 exporting cache to client directory
+#24 preparing build cache for export
+#24 writing cache manifest sha256:b0cbfcd007d8fe7a6a0387195711d72d4f12ab90f78ebf4f64e03db4672aec77 done
+#24 DONE 0.6s
 Pushing image to registry...
 Upload succeeded
 ==> Deploying...
@@ -312,7 +347,7 @@ Upload succeeded
    INFO  Routes cached successfully.  
    INFO  Blade templates cached successfully.  
    INFO  Running migrations.  
-  2024_01_01_000001_create_status_table ........................... 168ms FAIL
+  2024_01_01_000001_create_status_table ........................... 144ms FAIL
 In Connection.php line 760:
                                                                                
   SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation "status" already exist  
@@ -326,57 +361,18 @@ In Connection.php line 545:
   SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation "status" already exist  
   s                                                                            
                                                                                
-AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.214.29.111. Set the 'ServerName' directive globally to suppress this message
-AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.214.29.111. Set the 'ServerName' directive globally to suppress this message
-[Fri Feb 21 23:08:12.343579 2025] [mpm_prefork:notice] [pid 61:tid 61] AH00163: Apache/2.4.62 (Debian) PHP/8.1.31 configured -- resuming normal operations
-[Fri Feb 21 23:08:12.343855 2025] [core:notice] [pid 61:tid 61] AH00094: Command line: 'apache2 -D FOREGROUND'
-::1 - - [21/Feb/2025:23:08:12 +0000] "HEAD / HTTP/1.1" 302 1146 "-" "Go-http-client/1.1"
-==> New primary port detected: 80. Restarting deploy to update network configuration...
-==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
-                                                                                
-                           APPLICATION IN PRODUCTION.                           
-                                                                                
-  Do you really wish to run this command? (yes/no) [no]
-❯ 
-   WARN  Command canceled.  
-   INFO  Configuration cached successfully.  
-   INFO  Routes cached successfully.  
-   INFO  Blade templates cached successfully.  
-   INFO  Running migrations.  
-  2024_01_01_000001_create_status_table ........................... 149ms FAIL
-In Connection.php line 760:
-                                                                               
-  SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation "status" already exist  
-  s (SQL: create table "status" ("id" bigserial primary key not null, "name"   
-  varchar(255) not null, "color" varchar(255) not null default 'primary', "cr  
-  eated_at" timestamp(0) without time zone null, "updated_at" timestamp(0) wi  
-  thout time zone null))                                                       
-                                                                               
-In Connection.php line 545:
-                                                                               
-  SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation "status" already exist  
-  s                                                                            
-                                                                               
-AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.214.157.196. Set the 'ServerName' directive globally to suppress this message
-AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.214.157.196. Set the 'ServerName' directive globally to suppress this message
-[Fri Feb 21 23:09:11.410841 2025] [mpm_prefork:notice] [pid 61:tid 61] AH00163: Apache/2.4.62 (Debian) PHP/8.1.31 configured -- resuming normal operations
-[Fri Feb 21 23:09:11.410881 2025] [core:notice] [pid 61:tid 61] AH00094: Command line: 'apache2 -D FOREGROUND'
-::1 - - [21/Feb/2025:23:09:12 +0000] "HEAD / HTTP/1.1" 302 1146 "-" "Go-http-client/1.1"
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.214.65.92. Set the 'ServerName' directive globally to suppress this message
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 10.214.65.92. Set the 'ServerName' directive globally to suppress this message
+[Fri Feb 21 23:29:15.550667 2025] [mpm_prefork:notice] [pid 62:tid 62] AH00163: Apache/2.4.62 (Debian) PHP/8.1.31 configured -- resuming normal operations
+[Fri Feb 21 23:29:15.550707 2025] [core:notice] [pid 62:tid 62] AH00094: Command line: 'apache2 -D FOREGROUND'
+::1 - - [21/Feb/2025:23:29:15 +0000] "HEAD / HTTP/1.1" 301 194 "-" "Go-http-client/1.1"
 ==> Your service is live 🎉
-::1 - - [21/Feb/2025:23:09:19 +0000] "GET / HTTP/1.1" 302 1584 "-" "Go-http-client/2.0"
-::1 - - [21/Feb/2025:23:09:19 +0000] "GET /login HTTP/1.1" 200 3790 "http://ciudadlimpia.onrender.com/login" "Go-http-client/2.0"
-::1 - - [21/Feb/2025:23:09:24 +0000] "GET / HTTP/1.1" 302 1584 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:09:24 +0000] "GET /login HTTP/1.1" 200 3790 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:09:27 +0000] "GET /favicon.ico HTTP/1.1" 200 240 "https://ciudadlimpia.onrender.com/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:09:19 +0000] "GET / HTTP/1.1" 302 1584 "-" "Go-http-client/2.0"
-::1 - - [21/Feb/2025:23:09:19 +0000] "GET /login HTTP/1.1" 200 3790 "http://ciudadlimpia.onrender.com/login" "Go-http-client/2.0"
-::1 - - [21/Feb/2025:23:09:24 +0000] "GET / HTTP/1.1" 302 1584 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:09:24 +0000] "GET /login HTTP/1.1" 200 3790 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:09:27 +0000] "GET /favicon.ico HTTP/1.1" 200 240 "https://ciudadlimpia.onrender.com/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-==> Detected a new open port HTTP:80
-::1 - - [21/Feb/2025:23:09:50 +0000] "GET /login HTTP/1.1" 200 3790 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:10:03 +0000] "POST /login HTTP/1.1" 302 1584 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:10:05 +0000] "GET /login HTTP/1.1" 200 3867 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:10:14 +0000] "POST /login HTTP/1.1" 302 1584 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:10:16 +0000] "GET /login HTTP/1.1" 200 3867 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
-::1 - - [21/Feb/2025:23:10:17 +0000] "GET /favicon.ico HTTP/1.1" 304 191 "https://ciudadlimpia.onrender.com/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
+::1 - - [21/Feb/2025:23:29:17 +0000] "GET / HTTP/1.1" 301 548 "-" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:17 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:17 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com/" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:17 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com/" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:18 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com/" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:18 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com/" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:18 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com/" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:18 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com/" "Go-http-client/2.0"
+::1 - - [21/Feb/2025:23:29:18 +0000] "GET / HTTP/1.1" 301 548 "https://ciudadlimpia.onrender.com/" "Go-http-client/2.0"
