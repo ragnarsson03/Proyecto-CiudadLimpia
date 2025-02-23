@@ -1,0 +1,110 @@
+.city-logo {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+}
+
+.city-logo .buildings {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.building {
+    background: #3b82f6;
+    width: 20px;
+    border-radius: 4px 4px 0 0;
+}
+
+.building-1 { height: 60%; }
+.building-2 { height: 90%; }
+.building-3 { height: 75%; }
+.building-4 { height: 85%; }
+
+.leaf {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background: #22c55e;
+    border-radius: 0 50% 50% 50%;
+    transform-origin: top left;
+    animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(10deg); }
+}
+.city-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.city-logo {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.buildings {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.building {
+    background: #3b82f6;
+    width: 15px;
+    transition: height 0.3s ease;
+}
+
+.building-1 { height: 60%; border-radius: 3px 3px 0 0; }
+.building-2 { height: 90%; border-radius: 3px 3px 0 0; }
+.building-3 { height: 75%; border-radius: 3px 3px 0 0; }
+.building-4 { height: 85%; border-radius: 3px 3px 0 0; }
+
+.leaf {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    background: #22c55e;
+    border-radius: 0 50% 50% 50%;
+    transform-origin: top left;
+    animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) rotate(15deg); }
+}
+
+/* Hover effects */
+.city-logo:hover .building {
+    background: #2563eb;
+}
+
+.city-logo:hover .leaf {
+    background: #16a34a;
+}
